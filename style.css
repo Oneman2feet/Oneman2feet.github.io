@@ -1,5 +1,7 @@
 body { background: #CEF6F5; }
 
+a { color: inherit; }
+
 h1,h2,p { font-family: Georgia, serif; color: #6E6E6E; }
 
 h1 { font-size: 50px; padding-left: 100px; }
