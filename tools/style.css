@@ -9,3 +9,5 @@ h1 { font-size: 50px; padding-left: 100px; }
 h2 { font-size: 35px; }
 
 p { font-size: 20px; }
+
+img#me { position: absolute; top: 0; right: 0; }
