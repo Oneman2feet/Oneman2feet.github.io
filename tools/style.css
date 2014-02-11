@@ -3,7 +3,9 @@ html,body { width: 100% }
 
 body { background: #CEF6F5; }
 a { color: inherit; }
+a:hover { color: #939393; }
 h1,h2,p { font-family: Georgia, serif; color: #6E6E6E; }
+h2 a { text-decoration: none; font-style: italic; }
 
 #main { float: left;  width: 70%; text-align: center; margin-top: 50px; }
 #side { float: right; width: 30%; text-align: center; margin-top: 50px; }
