@@ -1,13 +1,15 @@
+* { margin: 0; padding: 0; }
+html,body { width: 100% }
+
 body { background: #CEF6F5; }
-
 a { color: inherit; }
-
 h1,h2,p { font-family: Georgia, serif; color: #6E6E6E; }
 
-h1 { font-size: 50px; padding-left: 100px; }
+#main { float: left;  width: 70%; text-align: center; margin-top: 50px; }
+#side { float: right; width: 30%; text-align: center; margin-top: 50px; }
 
-h2 { font-size: 35px; }
+h1 { font-size: 50px; line-height: 80px; }
+h2 { font-size: 35px; line-height: 60px; }
+p  { font-size: 20px; line-height: 35px; }
 
-p { font-size: 20px; }
-
-img#me { position: absolute; top: 50px; right: 80px; }
+#side #me {  }
