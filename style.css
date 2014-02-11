@@ -1,3 +1,9 @@
 body { background: #CEF6F5; }
 
-h1 { font-family: Georgia, serif; font-size: 50px; color: #6E6E6E; padding-left: 100px; }
+h1,h2,p { font-family: Georgia, serif; color: #6E6E6E; }
+
+h1 { font-size: 50px; padding-left: 100px; }
+
+h2 { font-size: 35px; }
+
+p { font-size: 20px; }
