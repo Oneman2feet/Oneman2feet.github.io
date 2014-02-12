@@ -3,24 +3,24 @@
 <html>
   <head>
 
-    <audio id="audiotag1" src="assets/sounds/tada.wav" preload="auto"></audio>
-    <audio id="audiotag2" src="assets/sounds/brontupisto.wav" preload="auto"></audio>
+    <audio id="audiotag1" src="sleepybob-files/assets/sounds/tada.wav" preload="auto"></audio>
+    <audio id="audiotag2" src="sleepybob-files/assets/sounds/brontupisto.wav" preload="auto"></audio>
     </script>
-<link rel="icon" href="assets/favicon.ico" type="image/x-icon"/>
+<link rel="icon" href="sleepybob-files/assets/favicon.ico" type="image/x-icon"/>
 <style type="text/css">
-  @import "css/style.css";
+  @import "sleepybob-files/css/style.css";
   </style>
-<link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon"/>
+<link rel="shortcut icon" href="sleepybob-files/assets/favicon.ico" type="image/x-icon"/>
 <meta charset="utf-8">
 <title>Sleepy Bob | Projects | Zachary T. Zimmerman</title>
 <link rel="shortcut icon"
       type="image/png"
       href="favicon.png">
 
-<script src="js/Box2D.js"></script>
-<script src="js/bTest.js"></script>
-<script src="js/jquery.js"></script>
-<script src="js/jcanvas.min.js"></script>
+<script src="sleepybob-files/js/Box2D.js"></script>
+<script src="sleepybob-files/js/bTest.js"></script>
+<script src="sleepybob-files/js/jquery.js"></script>
+<script src="sleepybob-files/js/jcanvas.min.js"></script>
 
 <script>
   function getMousePos(canvas, evt) {
@@ -53,7 +53,7 @@
 
   $(window).keydown(function(e) {
     if (e.keyCode == '32') {
-      if (win) {window.location.href = "{{next}}";}
+      if (win) {window.location.reload();}
       else if (lose) {window.location.reload();}
     }
   });
@@ -66,8 +66,12 @@
 
   <div id="bg">
     <canvas id="c0" width="800" height="600" style="border: 1px solid black"></canvas>
-    <a id="screen"></a>
-    </div>
+  </div>
+
+  <footer>
+    <p>Winner of the Cornell Google Game Jam 2013</p>
+    <p><a href="https://github.com/Oneman2feet/Cornell-Game-Jam-2013">Source Code Here</a></p>
+  </footer>
 
   <script async>
     // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
@@ -285,7 +289,7 @@
 					     halfHeight : 1,
 					     halfWidth : 2,
 					     angle: -0.2,
-					     imgsrc : "assets/pillow.png"
+					     imgsrc : "sleepybob-files/assets/pillow.png"
 					     });
 
 					     world[obj.id] = obj;
@@ -325,8 +329,8 @@
       name2 = contact.m_fixtureB.m_body.m_userData;
       if (name1 == "bed" || name2 == "bed") {
       document.getElementById('audiotag1').play();
-      win = true;
-      $('#screen').css('z-index', 20).html('<div id="winscreen"><h3>YOU MADE IT TO THE BED</h3><p>All thanks to your benevolent guardian.</p><p>Next Level? Press Space.</p></div>');
+      if (!win) $('#bg').prepend('<a id="screen"><div id="winscreen"><h3>YOU MADE IT TO THE BED</h3><p>All thanks to your benevolent guardian.</p><p>Next Level? Press Space.</p></div></a>');
+      win = true
       } else {
       if (name1.indexOf("pillow") != -1) {
 
@@ -346,7 +350,7 @@
       ctx.restore();
 
       $("canvas").drawImage({
-      source : "assets/forest.png",
+      source : "sleepybob-files/assets/forest.png",
       x : 0,
       y : 0,
       width : 1600,
@@ -428,13 +432,13 @@
 			   y : 7.2,
 			   halfHeight : 1.1,
 			   halfWidth : 1.2,
-			   imgsrc : "assets/character/body.png"
+			   imgsrc : "sleepybob-files/assets/character/body.png"
 			   }, {
 			   id : "head",
 			   x : 6.5,
 			   y : 5,
 			   radius : 0.9,
-			   imgsrc : "assets/character/head.png"
+			   imgsrc : "sleepybob-files/assets/character/head.png"
 			   }, {
 			   id : "leftarm",
 			   x : 4.2,
@@ -442,7 +446,7 @@
 			   angle : 1.3,
 			   halfHeight : 0.9,
 			   halfWidth : 0.4,
-			   imgsrc : "assets/character/leftarm.png"
+			   imgsrc : "sleepybob-files/assets/character/leftarm.png"
 			   }, {
 			   id : "rightarm",
 			   x : 8.85,
@@ -450,7 +454,7 @@
 			   angle : -1.3,
 			   halfHeight : 0.9,
 			   halfWidth : 0.4,
-			   imgsrc : "assets/character/rightarm.png"
+			   imgsrc : "sleepybob-files/assets/character/rightarm.png"
 			   }, {
 			   id : "leftleg",
 			   x : 5.8,
@@ -458,7 +462,7 @@
 			   angle : 0,
 			   halfHeight : 1.1,
 			   halfWidth : 0.5,
-			   imgsrc : "assets/character/leftleg.png"
+			   imgsrc : "sleepybob-files/assets/character/leftleg.png"
 			   }, {
 			   id : "rightleg",
 			   x : 7.2,
@@ -466,7 +470,7 @@
 			   angle : 0,
 			   halfHeight : 1.1,
 			   halfWidth : 0.5,
-			   imgsrc : "assets/character/rightleg.png"
+			   imgsrc : "sleepybob-files/assets/character/rightleg.png"
 			   }, {
 			   id : "leftshoulder",
 			   x : 5.4,
@@ -497,7 +501,7 @@
 			   halfHeight : 2,
 			   halfWidth : 3,
 			   angle : 0,
-			   imgsrc : "assets/bed.png"
+			   imgsrc : "sleepybob-files/assets/bed.png"
 			   }, {
 			   id : "pillow1",
 			   x : 15,
@@ -505,7 +509,7 @@
 			   halfHeight : 1,
 			   halfWidth : 2,
 			   angle : -0.2,
-			   imgsrc : "assets/pillow.png"
+			   imgsrc : "sleepybob-files/assets/pillow.png"
 			   }, {
 			   id : "pillow2",
 			   x : 7,
@@ -513,7 +517,7 @@
 			   halfHeight : 1,
 			   halfWidth : 2,
 			   angle : -0.2,
-			   imgsrc : "assets/pillow.png"
+			   imgsrc : "sleepybob-files/assets/pillow.png"
 			   }, {
 			   id : "pillow3",
 			   x : 20,
@@ -521,7 +525,7 @@
 			   halfHeight : 1,
 			   halfWidth : 2,
 			   angle : -0.2,
-			   imgsrc : "assets/pillow.png"
+			   imgsrc : "sleepybob-files/assets/pillow.png"
 			   }];
 
 			   var running = true;
@@ -589,8 +593,8 @@
 								function lose() {
 								document.getElementById('audiotag2').play();
 								lost = true;
-								world['head'].imgsrc = "assets/character/awakehead.png";
-								$('#screen').css('z-index', 20).html('<div id="losescreen"><h3>YOU WOKE UP</h3><p>Sorry this night\'s sleep was not so good.</p><p>Try Again? Press Space.</p></div>');
+								world['head'].imgsrc = "sleepybob-files/assets/character/awakehead.png";
+								$('#bg').prepend('<a id="screen"><div id="losescreen"><h3>YOU WOKE UP</h3><p>Sorry this night\'s sleep was not so good.</p><p>Try Again? Press Space.</p></div></a>');
 																												     }
 
 																												     /* ---- INPUT ----------------------------- */
