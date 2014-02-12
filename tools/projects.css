@@ -3,9 +3,16 @@ html,body { width: 100%; }
 
 body { background: #CEF6F5; min-height: 100%; }
 
-h1 { font-size: 50px; padding: 50px; text-align: center; font-family: Georgia, serif; color: #6E6E6E; }
+#content { width: 85%; margin: 0 7.5%; min-height: 100%; margin-bottom: -120px; }
+#content h1 { font-size: 50px; padding: 50px; text-align: center; font-family: Georgia, serif; color: #6E6E6E; }
+#content h3 { font-size: 25px; padding: 35px; text-align: left;   font-family: Georgia, serif; color: #6E6E6E; }
+#content:after { content: ""; display: block; }
+
+#content ul li { list-style: none; }
 
 footer { width: 100%; height: 120px; background: #C8AF8C; border-top: 8px solid #76B8DE; position: absolute; bottom: 0; }
 footer nav { width: 70%; margin: 0 15%; }
 footer nav a { display: block; width: 33%; float: left; text-align: center; padding: 40px 0;
        	       font-family: "Trebuchet MS", Helvetica, sans-serif; font-size: 25px; font-weight: bold; text-decoration: none; color: #5F5F5F; }
+footer nav a:hover { color: #777; }
+footer, #content:after { height: 120px; }
