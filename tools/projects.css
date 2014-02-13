@@ -12,12 +12,12 @@ body { background: #CEF6F5; min-height: 100%; }
 #content:after { content: ""; display: block; }
 
 #content ul li h3 a { text-decoration: none; color: inherit; }
-#content ul li h3 a:hover { color: #999; }
+#content ul li a:hover { color: #999; }
+#content ul li a { color: inherit }
 #content ul li { list-style: none; }
 #content ul li p { font-size: 20px; padding-right: 650px; padding-left: 30px; padding-bottom: 20px; }
 #content ul li .preview { float: right; }
 #content ul li .preview img { border: 4px solid #6E6E6E; }
-
 
 footer { width: 100%; height: 120px; background: #C8AF8C; border-top: 8px solid #76B8DE; }
 footer nav { width: 70%; margin: 0 15%; }
