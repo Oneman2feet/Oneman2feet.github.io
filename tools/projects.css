@@ -23,3 +23,10 @@
     -moz-transition: opacity .25s ease-in-out;
     -webkit-transition: opacity .25s ease-in-out;
 }
+
+@media all and (max-width: 1000px)
+{
+	.preview { float: none; width: 610px; margin-bottom: 20px; }
+	.preview img { width: 600px; }
+	#content ul li > p { padding: 10px 0; width: 100%; }
+}
