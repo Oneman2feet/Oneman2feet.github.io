@@ -27,7 +27,7 @@
 @media all and (max-width: 1000px)
 {
 	#content h3 { text-align: center; }
-	.preview { float: none; width: 610px; margin-bottom: 20px; margin: 0 auto; }
+	.preview { float: none; width: 610px; margin-bottom: 30px; margin: 0 auto; }
 	.preview img { width: 600px; }
 	#content ul li > p { padding: 10px 20px; width: 100%; }
 }
