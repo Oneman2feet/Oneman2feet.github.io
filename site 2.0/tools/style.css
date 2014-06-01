@@ -1,24 +1,13 @@
 * { margin: 0; padding: 0; }
-html,body { width: 100%; height: 100%; }
-*, *:before, *:after {
-  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
- }
-
-/* A font by Jos Buivenga (exljbris) -> www.exljbris.com */
-@font-face {
-  font-family: 'Diavlo Black';
-  src: url('fonts/Diavlo_BLACK.eot'); /* IE9 Compat Modes */
-  src: url('fonts/Diavlo_BLACK.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('fonts/Diavlo_BLACK.woff') format('woff'), /* Modern Browsers */
-       url('fonts/Diavlo_BLACK.ttf')  format('truetype'), /* Safari, Android, iOS */
-       url('fonts/Diavlo_BLACK.svg#svgFontName') format('svg'); /* Legacy iOS */
-}
-
+html,body { width: 100%; min-width: 400px; height: 100%; }
 body { background: #A9D3FF; }
+
+header { width: 100%; height: 10%; max-height: 80px; background: /*#1397b7*/ /*#3c5774*/ rgba(60,87,116,0.9); position: fixed; }
+header nav { margin: 0 auto; text-align: center; }
 
 #content
 {
-	width: 100%; min-width: 500px; min-height: 100%; margin: 0 auto -100px auto; padding-top: 30px;
+	width: 100%; min-height: 100%; margin: 0 auto -100px auto; padding-top: 80px;
 	font-family: Georgia, serif; color: #6E6E6E;
 }
 
@@ -26,7 +15,7 @@ body { background: #A9D3FF; }
 #content a:hover { color: #939393; }
 #content:after { content: ""; display: block; }
 
-footer { width: 100%; min-width: 1000px; height: 100px; background: #C8AF8C; border-top: 8px solid #76B8DE; }
+footer { width: 100%; height: 100px; background: #C8AF8C; border-top: 8px solid #76B8DE; }
 footer nav { width: 70%; margin: 0 auto; max-width: 1000px; }
 footer nav a { display: block; width: 33%; float: left; text-align: center; font-family: 'Diavlo Black', "Trebuchet MS", Helvetica, sans-serif; font-size: 25px; line-height: 92px; font-weight: bold; text-decoration: none; color: #5F5F5F; }
 footer nav a:hover { color: #777; }
