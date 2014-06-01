@@ -2,6 +2,9 @@
 #content a:hover { color: #939393; }
 #content h2 a { text-decoration: none; font-style: italic; }
 
+#splash { width: 100%; }
+#splash img { width: 100%; }
+
 #main { padding-right: 410px; padding-left: 30px; text-align: center; }
 #side { float: right; width: 400px; text-align: center; }
 
