@@ -3,8 +3,8 @@ html,body { width: 100%; min-width: 400px; height: 100%; }
 body { background: #A9D3FF; }
 
 header { width: 100%; height: 80px; background: /*#1397b7*/ /*#3c5774*/ rgba(60,87,116,0.9); position: fixed; }
-header nav { width: 320px; height: 100%; margin: 0 auto; text-align: center; }
-header nav a { display: block; float: left; width: 80px; height: 80px; }
+header nav { width: 400px; height: 100%; margin: 0 auto; text-align: center; }
+header nav a { display: block; float: left; width: 100px; height: 80px; }
 header nav a:hover { background: rgba(0,0,0,0.5); }
 header nav a img { height: 64px; margin-top: 8px; }
 
