@@ -1,12 +1,11 @@
 #splash { width: 100%; }
 #splash object { width: 100%; }
 
-#main { width: 100%; padding-right: 410px; padding-left: 30px; text-align: center; }
 #side { float: right; width: 400px; text-align: center; }
 
-#main h1 { font-family: 'Diavlo Black'; font-size: 50px; line-height: 80px; }
-#main h2 { font-size: 35px; line-height: 60px; padding-bottom: 30px; }
-#main p  { font-size: 20px; line-height: 35px; padding: 10px 40px; }
+#main { width: 100%; padding-right: 410px; padding-left: 30px; text-align: left; }
+#main p  { font-size: 25px; line-height: 35px; padding: 10px 40px; }
+#main p .bigtext { font-size: 60px; font-weight: bold; }
 
 /* TRANSITIONS */
 #side, #side img, #main
@@ -17,10 +16,12 @@
    	        transition: 200ms;
 }
 
-/* for smaller screens, side and main are in a simgle column. */
+/* For smaller screens, side and main are in a simgle column. Text is also smaller. */
 @media all and (max-width: 800px)
 {
-	#main { padding: 15px; }
 	#side { float: none; width: 100%; margin: 0 auto; }
 	#side img { width: 70%; min-width: 362px; }
+	#main { padding: 15px; text-align: center; }
+	#main p { font-size: 18px; }
+	#main p .bigtext { font-size: 30px; }
 }
