@@ -1,11 +1,11 @@
 #splash { width: 100%; }
 #splash object { width: 100%; }
 
-#intro { width: 100%; display: table; }
+#intro { width: 100%; }
 
-#side { float: right; width: 400px; text-align: center; display: table-cell; }
+#side { float: left; width: 400px; height: 100%; padding-bottom: 30px; text-align: center; }
 
-#main { width: 100%; padding-right: 410px; padding-left: 30px; float: left; text-align: left; display: table-cell; vertical-align: middle; }
+#main { width: 100%; padding-top: 20px; text-align: left; }
 #main p  { font-size: 25px; line-height: 35px; padding: 10px 40px; }
 #main p .bigtext { font-size: 60px; font-weight: bold; }
 
@@ -18,12 +18,22 @@
    	        transition: 200ms;
 }
 
-/* For smaller screens, side and main are in a simgle column. Text is also smaller. */
-@media all and (max-width: 800px)
+/* For smaller screens, shrink my picture and make text smaller. */
+@media (min-width: 601px) and (max-width: 1024px)
+{
+	#side { width: 300px; }
+	#side img { width: 250px; }
+	#main { padding: 15px; text-align: justify; }
+	#main p { font-size: 18px; }
+	#main p .bigtext { font-size: 30px; }
+}
+
+/* For even smaller screens, side and main are in a single column. */
+@media all and (max-width: 600px)
 {
 	#side { width: 100%; margin: 0 auto; }
-	#side img { width: 70%; min-width: 362px; }
-	#main { padding: 15px; text-align: center; }
+	#side img { width: 70%; min-width: 280px; }
+	#main { padding: 15px; text-align: justify; }
 	#main p { font-size: 18px; }
 	#main p .bigtext { font-size: 30px; }
 }

@@ -35,7 +35,7 @@ header, header nav, header nav a, header nav a img, #content
    	        transition: 200ms;
 }
 
-/* for smaller screens, header bar is smaller. */
+/* for smaller screens, header and footer bars are smaller. */
 @media all and (max-width: 800px)
 {
 	header { height: 60px; }
@@ -43,4 +43,5 @@ header, header nav, header nav a, header nav a img, #content
 	header nav a { width: 90px; }
 	header nav a img { height: 44px; }
 	#content { padding-top: 60px; }
+	footer nav a { font-size: 18px; }
 }
