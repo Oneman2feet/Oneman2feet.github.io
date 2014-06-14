@@ -1,18 +1,18 @@
 #splash { width: 100%; }
 #splash object { width: 100%; }
 
-#intro { width: 100%; }
+#intro { width: 100%; margin-top: -80px; padding-top: 80px; }
 
 #side { float: left; width: 400px; height: 100%; padding-bottom: 30px; text-align: center; }
 
-#main { width: 100%; padding-top: 20px; text-align: left; }
-#main p  { font-size: 25px; line-height: 35px; padding: 10px 40px; }
-#main p .bigtext { font-size: 60px; font-weight: bold; }
+#about { width: 100%; margin-top: -80px; padding-top: 100px; text-align: left; }
+#about p  { font-size: 25px; line-height: 35px; padding: 10px 40px; }
+#about p .bigtext { font-size: 60px; font-weight: bold; }
 
 #projects { background-color: blue; height: 400px; width: 100%; }
 
 /* TRANSITIONS */
-#side, #side img, #main
+#side, #side img, #about
 {
 	-webkit-transition: 200ms;
    	   -moz-transition: 200ms;
@@ -25,17 +25,17 @@
 {
 	#side { width: 300px; }
 	#side img { width: 250px; }
-	#main { padding: 15px; text-align: justify; }
-	#main p { font-size: 18px; }
-	#main p .bigtext { font-size: 30px; }
+	#about { padding: 15px; padding-top: 80px; text-align: justify; }
+	#about p { font-size: 18px; }
+	#about p .bigtext { font-size: 30px; }
 }
 
-/* For even smaller screens, side and main are in a single column. */
+/* For even smaller screens, side and about are in a single column. */
 @media all and (max-width: 600px)
 {
 	#side { width: 100%; margin: 0 auto; }
 	#side img { width: 70%; }
-	#main { padding: 15px; text-align: justify; }
-	#main p { font-size: 18px; }
-	#main p .bigtext { font-size: 30px; }
+	#about { float: left; width: 100%; padding: 15px; padding-top: 80px; text-align: justify; }
+	#about p { font-size: 18px; }
+	#about p .bigtext { font-size: 30px; }
 }
