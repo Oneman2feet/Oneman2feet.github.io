@@ -32,7 +32,7 @@
 @media all and (max-width: 600px)
 {
 	#side { width: 100%; margin: 0 auto; }
-	#side img { width: 70%; min-width: 280px; }
+	#side img { width: 70%; }
 	#main { padding: 15px; text-align: justify; }
 	#main p { font-size: 18px; }
 	#main p .bigtext { font-size: 30px; }
