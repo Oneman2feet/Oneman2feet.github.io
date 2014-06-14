@@ -1,7 +1,7 @@
 #splash { width: 100%; }
 #splash object { width: 100%; }
 
-#intro { width: 100%; }
+#intro { width: 100%; margin-top: -80px; padding-top: 80px; }
 
 #side { float: left; width: 400px; height: 100%; padding-bottom: 30px; text-align: center; }
 
