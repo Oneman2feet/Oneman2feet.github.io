@@ -9,7 +9,8 @@
 #about p  { font-size: 25px; line-height: 35px; padding: 10px 40px; }
 #about p .bigtext { font-size: 60px; font-weight: bold; }
 
-#projects { background-color: blue; height: 400px; width: 100%; }
+#projects { background-color: #3c5774; color: #A9D3FF; /*#1397b7;*/ height: 1400px; width: 100%; padding: 20px; margin-top: -80px; padding-top: 80px; }
+#projects h2 { font-size: 50px; }
 
 /* TRANSITIONS */
 #side, #side img, #about
