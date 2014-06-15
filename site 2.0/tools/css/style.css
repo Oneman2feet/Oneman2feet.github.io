@@ -11,30 +11,30 @@ header nav a { display: block; float: left; width: 100px; height: 100%; }
 header nav a:hover, header nav a:active, header nav a:focus { background: rgba(0,0,0,0.5); }
 header nav a img { height: 64px; margin-top: 8px; }
 
+/* SPLASH SCREEN */
+#splash { width: 100%; max-width: 1700px; padding-top: 80px; margin: 0 auto; }
+#splash object { width: 100%; }
+
 /* UNIVERSAL STYLING */
 #content
 {
-	width: 100%; max-width: 1600px; min-height: 100%; margin: 0 auto -100px auto; padding-top: 80px;
+	width: 100%; max-width: 1500px; min-height: 100%; margin: 0 auto -100px auto;
 	font-family: Georgia, serif; color: #6E6E6E;
 }
 
-#content h2 { font-size: 50px; color: #1397b7; text-align: right; padding-right: 70px; padding-top: 20px; }
+#content h2 { font-family: 'Lobster', cursive; font-size: 50px; color: #1397b7; text-align: right; padding-right: 40px; padding-top: 20px; }
 #content section { margin-top: -80px; padding-top: 80px; }
 
 /* LINKS */
 #content a { color: inherit; text-decoration: underline; }
 #content a:hover, #content a:active, #content a:focus { color: #939393; }
 
-/* SPLASH */
-#splash { width: 100%; }
-#splash object { width: 100%; }
-
 /* COLUMNS */
 #intro { width: 100%; }
 #side { float: left; width: 400px; height: 100%; padding-bottom: 30px; text-align: center; }
 
 /* ABOUT */
-#about { width: 100%; margin-top: -80px; padding-top: 80px; text-align: left; }
+#about { width: 100%; margin-top: -80px; padding-top: 80px; text-align: justify; }
 #about p  { font-size: 25px; line-height: 35px; padding: 10px 40px; }
 #about p .bigtext { font-size: 60px; font-weight: bold; }
 
@@ -63,10 +63,10 @@ header, header nav, header nav a, header nav a img, #content, #side, #side img, 
 /* For smaller screens, shrink my picture and make text smaller. */
 @media (min-width: 601px) and (max-width: 1024px)
 {
-	#content h2 { font-size: 30px; padding-right: 40px; }
+	#content h2 { font-size: 30px; }
 	#side { width: 300px; }
 	#side img { width: 250px; }
-	#about { padding: 15px; padding-top: 80px; text-align: justify; }
+	#about { padding: 15px; padding-top: 80px; }
 	#about p { font-size: 18px; }
 	#about p .bigtext { font-size: 30px; }
 }
@@ -78,7 +78,7 @@ header, header nav, header nav a, header nav a img, #content, #side, #side img, 
 	header nav { width: 360px; }
 	header nav a { width: 90px; }
 	header nav a img { height: 44px; }
-	#content { padding-top: 60px; }
+	#splash { padding-top: 60px; }
 	footer nav a { font-size: 18px; }
 }
 
@@ -88,7 +88,7 @@ header, header nav, header nav a, header nav a img, #content, #side, #side img, 
 	#content h2 { font-size: 30px; text-align: center; padding: 0; }
 	#side { width: 100%; margin: 0 auto; }
 	#side img { width: 70%; }
-	#about { float: left; width: 100%; padding: 15px; padding-top: 80px; text-align: justify; }
+	#about { float: left; width: 100%; padding: 15px; padding-top: 80px; }
 	#about p { font-size: 18px; }
 	#about p .bigtext { font-size: 30px; }
 }
