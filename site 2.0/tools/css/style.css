@@ -23,7 +23,8 @@ header nav a img { height: 64px; margin-top: 8px; }
 }
 
 #content h2 { font-family: 'Lobster', cursive; font-size: 50px; color: #1397b7; text-align: right; padding-right: 40px; padding-top: 20px; }
-#content section { margin-top: -80px; padding-top: 80px; }
+#content p { text-align: justify; }
+#content section { width: 100%; margin-top: -80px; padding-top: 80px; }
 
 /* LINKS */
 #content a { color: inherit; text-decoration: underline; }
@@ -31,45 +32,40 @@ header nav a img { height: 64px; margin-top: 8px; }
 
 /* COLUMNS */
 #intro { width: 100%; }
-#side { float: left; width: 400px; height: 100%; padding-bottom: 30px; text-align: center; }
+#side { float: left; width: 400px; height: 100%; /*padding-bottom: 30px;*/ text-align: center; }
 
 /* ABOUT */
-#about { width: 100%; margin-top: -80px; padding-top: 80px; text-align: justify; }
 #about p  { font-size: 25px; line-height: 35px; padding: 10px 40px; }
 #about p .bigtext { font-size: 60px; font-weight: bold; }
 
 /* PROJECTS */
-#projects { width: 100%; margin-top: -80px; padding-top: 80px; }
 #projects h3 { font-size: 30px; padding-bottom: 20px; text-align: left; }
 #projects ul { padding-top: 30px; }
-#projects ul li { list-style: none; padding: 30px; padding-top: 0; }
-#projects ul li > p { padding-right: 650px; font-size: 20px; padding-bottom: 20px; }
+#projects ul li { list-style: none; padding: 40px; padding-top: 0; }
+#projects ul li > p { /*650px;*/ font-size: 20px; line-height: 30px; padding-bottom: 20px; }
 
 /* DEMO THUMBNAILS */
-.preview { position: relative; border: 5px solid black; display: block; float: right; }
-.preview img { margin-bottom: -4px; }
+.preview { width: 50%; max-width: 602px; position: relative; border: 5px solid #3c5774; margin-left: 20px; margin-bottom: 15px; display: block; float: right; }
+.preview img { width: 100%; margin-bottom: -4px; }
 .screen { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: black; opacity: 0.4;
-    transition: opacity .25s ease-in-out;
-    -moz-transition: opacity .25s ease-in-out;
-    -webkit-transition: opacity .25s ease-in-out;
+          transition:         opacity .25s ease-in-out;
+          -moz-transition:    opacity .25s ease-in-out;
+          -webkit-transition: opacity .25s ease-in-out;
 }
-.screen p
-{ position: absolute; top: 50%; left: 50%; line-height: 70px; margin-top: -35px; width: 200px; margin-left: -100px; text-align: center;
-  font-size: 50px; font-family: Arial, Helvetica, sans-serif; }
+.screen p { position: absolute; top: 50%; left: 50%; line-height: 70px; margin-top: -35px;
+	        width: 200px; margin-left: -100px; text-align: center;
+            font-size: 50px; font-family: Arial, Helvetica, sans-serif; }
 .preview:hover { border-color: #6E6E6E; }
-.preview:hover .screen { opacity: 0;
-    transition: opacity .25s ease-in-out;
-    -moz-transition: opacity .25s ease-in-out;
-    -webkit-transition: opacity .25s ease-in-out;
-}
+.preview:hover .screen { opacity: 0; }
 
+/*
 @media all and (max-width: 1000px)
 {
 	#content h3 { text-align: center; }
-	.preview { float: none; width: 610px; margin-bottom: 30px; margin: 0 auto; }
-	.preview img { width: 600px; }
+	.preview { float: none; width: 100%; margin-bottom: 30px; margin: 0 auto; }
 	#projects ul li > p { padding: 10px 20px; width: 100%; }
 }
+*/
 
 /* STICKY FOOTER */
 #content:after { content: ""; display: block; }
@@ -81,7 +77,7 @@ footer nav a:hover, footer nav a:active, footer nav a:focus { color: #777; }
 footer, #content:after { height: 100px; }
 
 /* TRANSITIONS */
-header, header nav, header nav a, header nav a img, #content, #side, #side img, #about
+header, header nav, header nav a, header nav a img, #content, #side, #side img, #about, #projects h3, #projects p
 {
 	-webkit-transition: 200ms;
    	   -moz-transition: 200ms;
@@ -97,8 +93,10 @@ header, header nav, header nav a, header nav a img, #content, #side, #side img, 
 	#side { width: 300px; }
 	#side img { width: 250px; }
 	#about { padding: 15px; padding-top: 80px; }
-	#about p { font-size: 18px; }
+	#about p { font-size: 18px; line-height: 30px; }
 	#about p .bigtext { font-size: 30px; }
+	#projects h3 { font-size: 22px; padding-bottom: 10px; }
+	#projects ul li > p { font-size: 18px; }
 }
 
 /* Shrink header and footer bars */
@@ -119,6 +117,9 @@ header, header nav, header nav a, header nav a img, #content, #side, #side img, 
 	#side { width: 100%; margin: 0 auto; }
 	#side img { width: 70%; }
 	#about { float: left; width: 100%; padding: 15px; padding-top: 80px; }
-	#about p { font-size: 18px; }
+	#about p { font-size: 18px; line-height: 30px; }
 	#about p .bigtext { font-size: 30px; }
+	#projects .preview { width: 100%; }
+	#projects h3 { font-size: 22px; padding-bottom: 10px; text-align: center; }
+	#projects ul li > p { font-size: 18px; }
 }
