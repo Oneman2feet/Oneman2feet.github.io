@@ -100,13 +100,14 @@ header, header nav, header nav a, header nav a img, #content, #side, #side img, 
 }
 
 /* Shrink header and footer bars */
-@media all and (max-width: 800px)
+@media all and (max-width: 1024px)
 {
 	header { height: 60px; }
 	header nav { width: 360px; }
 	header nav a { width: 90px; }
 	header nav a img { height: 44px; }
 	#splash { padding-top: 60px; }
+	#content section { margin-top: -60px; padding-top: 60px; }
 	footer nav a { font-size: 18px; }
 }
 
