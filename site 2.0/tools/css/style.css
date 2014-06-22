@@ -43,6 +43,9 @@ header nav a img { height: 64px; margin-top: 8px; }
 #projects ul { padding-top: 30px; }
 #projects ul li { list-style: none; padding: 40px; padding-top: 0; }
 #projects ul li > p { /*650px;*/ font-size: 20px; line-height: 30px; padding-bottom: 20px; }
+#projects ul li .github { display: block; width: 100px; height: 35px; background-image: url('../images/github.png');
+						  zoom: 1; filter: alpha(opacity=70); opacity: 0.7; }
+#projects ul li .github:hover, #projects ul li .github:active, #projects ul li .github:focus { filter: alpha(opacity=100); opacity: 1; }
 
 /* DEMO THUMBNAILS */
 .preview { width: 50%; max-width: 602px; position: relative; border: 5px solid #3c5774; margin-left: 20px; margin-bottom: 15px; display: block; float: right; }

@@ -56,7 +56,7 @@
       <section id="about">
         <h2>About</h2>
         <p><span class="bigtext">Hi,</span> I'm Zachary. &nbsp; I study Computer Science at Cornell University, in the School of Engineering.  My interests include software development, computer vision, and graphics &mdash; as well as art, music, and design.  I'm also a member of the Cornell <a href="http://thechainotes.com" target="_blank">Chai Notes</a>, an A Cappella group on campus.  What more you say?  I enjoy solving twisty puzzles like the Rubik's cube, and love to bodyboard at the beach.</p>
-        <p>Interested? See my <a href="resume.pdf" target="_blank">resume</a> or check out my recent <a href="#projects">projects</a>.  If you want, you can also <a href="mailto:zacharytzimmerman@gmail.com" target="_blank">email me</a>.</p>
+        <p>Interested? See my <a href="resume.pdf" target="_blank">resume</a> or check out my recent <a href="#projects">projects</a> below.  If you want, you can also <a href="mailto:zacharytzimmerman@gmail.com" target="_blank">email me</a>.</p>
       </section>
       <div style="clear:both;"></div>
     </section>
@@ -65,27 +65,27 @@
       <h2>Projects</h2>
       <ul>
         <li>
-          <h3>Sleepy Bob: Cornell Google Game Jam</h3>
+          <h3>Sleepy Bob: 2013 Winner of the Cornell Google Game Jam</h3>
           <a class="preview" href="/sleepybob">
             <img src="tools/images/projects/sleepybob.jpg"/>
             <div class="screen"><p>DEMO</p></div>
           </a>
-          <p>Sleepy Bob is a parallax sidescrolling game with dreamy graphics and ragdoll physics.</p>
+          <p>Sleepy Bob is a parallax sidescrolling game with dreamy graphics and lifelike ragdoll physics.</p>
           <p>Bob is sleepwalking and he needs your help! The goal is to navigate him to the bed without waking him up.  Bob starts waking up if you shake him too much, or if he hits the objects around him.</p>
-          <p>Built in less than 24 hours, Sleepy Bob utilizes Box2D.js and jQuery, and was originally deployed using Flask for python.</p>
-          <p>Sleepy Bob is the 2013 winner of the Cornell Google Game Jam!</p>
-          <p>Play the <a href="/sleepybob">first level</a> or view the full project <a href="https://github.com/Oneman2feet/Cornell-Game-Jam-2013">on Github</a>.</p>
+          <p>Built in less than 24 hours, Sleepy Bob utilizes Box2D.js and jQuery, and was originally deployed using a Flask (python) backend.</p>
+          <a class="github" href="https://github.com/Oneman2feet/Cornell-Game-Jam-2013"></a>
           <div style="clear:both;"></div>
         </li>
         <li>
-          <h3>Poem Generator</h3>
+          <h3>Poem Generator: Presented at Google</h3>
           <a class="preview" href="http://bzamansky.com:7999">
             <img src="tools/images/projects/poemgenerator.jpg"/>
             <div class="screen"><p>DEMO</p></div>
           </a>
-          <p>Poem Generator is a social platform for sharing computer-generated poems, equipped with the tool used to generate them.  With Poem Generator, users can generate sonnets, haikus, free-verse, and rhyming poems &mdash; or poems in the style of famous poets like Shakespeare or Edgar Allan Poe. The most recently generated poems are displayed on the home page, and users can even share their poems via facebook.  So sign up, log in, and get started!</p>
-          <p>Poem Generator is powered by Flask, mongoDB, nltk, and HTML/CSS/JS.  The poem generation engine uses nltk as a rhyming library and syllable counter, and implements markov chaining on a corpus of text to emulate various poets' styles.</p>
-          <p><a href="http://bzamansky.com:7999">Check out the generator</a> or visit the <a href="http://github.com/Oneman2feet/Poem-Generator">github project</a> instead.</p>
+          <p>Poem Generator is an online tool for creating computer-generated poems, as well as a social platform for sharing these poems with the community.  With Poem Generator, users can generate sonnets, haikus, free-verse, and rhyming poems &mdash; or poems in the style of famous poets like Shakespeare and Edgar Allan Poe.  The most recently generated poems are automatically displayed on the site's home page, and users can even share their poems via facebook.  So sign up, log in, and get started!</p>
+          <p>Poem Generator is powered by Flask, MongoDB, and NLTK.  The poem generation engine uses NLTK as a rhyming library and syllable counter, and implements Markov chaining on a corpus of text to emulate various poets' styles.</p>
+          <p><a href="http://bzamansky.com:7999">Check out the generator</a> or visit the <a href="http://github.com/Oneman2feet/Poem-Generator">Github project</a> instead.</p>
+          <a class="github" href="http://github.com/Oneman2feet/Poem-Generator"></a>
           <div style="clear:both;"></div>
         </li>
         <li>
@@ -94,9 +94,10 @@
             <img src="tools/images/projects/soundsofthestreets.jpg"/>
             <div class="screen"><p>DEMO</p></div>
           </a>
-          <p>Sounds of the Streets is an inventive way of discovering new songs.  Have you ever been in a famous location and wanted to hear the songs written about it?  Or maybe you're on a road trip and want to listen to a playlist about the areas you pass through. Sounds of the Streets does all of this for you, and more.  Input a location, whether it be your current GPS or wifi-determined location, or a location you search for manually, and Sounds of the Streets will find the popular songs relating to that area.  It works by determining the nearest relevent landmark, street, state, or country, and finding songs referencing that place in the title.  Then it finds the music video on youtube and plays it for you.</p>
-          <p>Built with Flask, google maps, youtube, Last.fm, and jQuery.</p>
+          <p>Sounds of the Streets is an inventive way of discovering new songs.  Have you ever been in a famous location and wanted to hear the songs written about it?  Or maybe you're on a road trip and want to listen to a playlist about the areas you pass through. Sounds of the Streets does all of this for you, and more.  Input a location, whether it be your current GPS or Wifi-determined location, or one you search for manually, and Sounds of the Streets will find the popular songs relating to that area.  It works by determining the nearest relevant landmark, street, state, or country, and finding songs referencing that place in the title.  Then it finds the music video on YouTube and starts playing it for you.</p>
+          <p>Built with the Google Maps, YouTube, and Last.fm APIs, as well as Flask for a python backend.</p>
           <p>Show me the <a href="http://bzamansky.com:7358">site</a> and the <a href="https://github.com/Oneman2feet/Sounds-of-the-Streets">source code</a>!</p>
+          <a class="github" href="https://github.com/Oneman2feet/Sounds-of-the-Streets"></a>
           <div style="clear:both;"></div>
         </li>
         <li>
@@ -105,10 +106,12 @@
             <img src="tools/images/projects/stuydash.jpg"/>
             <div class="screen"><p>DEMO</p></div>
           </a>
-          <p>StuyDash is a dashboard web application with everything a Stuyvesant student needs to know about his day. From the bell schedule widget to the weather, StuyDash knows it all.</p>
-          <p>StuyDash works by screen-scraping the confusing and unappealing Stuyvesant website and displaying the useful stuff in an intuitive way.  StuyDash interperets the weekly schedule and intelligently displays the right bell schedule, for a quick and easy view of what period it is at the moment.  It also incorporates recent school news and the current weather.  On top of this, StuyDash features links to the most necessary and useful outside websites for quick access to even more information.</p>
-          <p>StuyDash uses Flask for a python backend, and is made beautiful with jQuery animations and CSS.</p>
+          <p>StuyDash is a dashboard web application with everything a Stuyvesant High School student needs to know about his or her day. From the bell schedule widget to the weather, StuyDash knows it all.</p>
+          <p>StuyDash works by screen-scraping the confusing and unappealing Stuyvesant website and displaying the useful stuff in an intuitive way.  StuyDash's main feature is a widget that intelligently displays the correct bell schedule for the day, giving a quick and easy view of what period it is at the moment.  It also incorporates recent school news and the current weather.  On top of this, StuyDash features links to the most necessary and useful outside websites for quick access to even more information.</p>
+          <p>There's more?  StuyDash is even more accessible, providing a 24-hour automated hotline that users can call to get the most recent information.  In addition, users can text queries to StuyDash and get the day's info all while they commute to school.</p>
+          <p>The StuyDash website uses Flask for a python backend, and is made beautiful with jQuery animations and CSS.  The StuyDash text and phone interface is powered by Twilio.</p>
           <p>Visit the <a href="http://bzamansky.com:7205">website</a> or the <a href="https://github.com/Oneman2feet/StuyDash">Github project</a>!</p>
+          <a class="github" href="https://github.com/Oneman2feet/StuyDash"></a>
           <div style="clear:both;"></div>
         </li>
       </ul>
