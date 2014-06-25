@@ -69,8 +69,8 @@ header nav a img { height: 64px; margin-top: 8px; }
           -webkit-transition: opacity .25s ease-in-out;
 }
 .screen p { position: absolute; top: 50%; left: 50%; line-height: 70px; margin-top: -35px;
-	        width: 200px; margin-left: -100px; text-align: center;
-            font-size: 5em; font-family: Arial, Helvetica, sans-serif; }
+	        width: 200px; margin-left: -100px; text-align: center !important;
+            font-size: 45px; font-family: Arial, Helvetica, sans-serif; }
 .preview:hover { border-color: #6E6E6E; }
 .preview:hover .screen { opacity: 0; }
 
@@ -105,14 +105,14 @@ header, header nav, header nav a, header nav a img, #content, #side, #side img, 
 /* For smaller screens, shrink my picture and make text smaller. */
 @media (min-width: 641px) and (max-width: 1024px)
 {
-	#content h2 { font-size: 30px; }
+	#content h2 { font-size: 3em; }
 	#side { width: 300px; }
 	#side img { width: 250px; }
 	#about { padding: 15px; padding-top: 80px; }
-	#about p { font-size: 18px; line-height: 30px; }
-	#about p .bigtext { font-size: 30px; }
-	#projects h3 { font-size: 22px; padding-bottom: 10px; }
-	#projects ul li > p { font-size: 18px; }
+	#about p { font-size: 1em; line-height: 30px; }
+	#about p .bigtext { font-size: 2em; }
+	#projects h3 { font-size: 1.6em; padding-bottom: 10px; }
+	#projects ul li > p { font-size: 1em; }
 }
 
 /* Shrink header and footer bars */
@@ -124,20 +124,20 @@ header, header nav, header nav a, header nav a img, #content, #side, #side img, 
 	header nav a img { height: 44px; }
 	#splash { padding-top: 60px; }
 	#content section { margin-top: -60px; padding-top: 60px; }
-	footer nav a { font-size: 18px; }
+	footer nav a { font-size: 1.2em; }
 }
 
 /* Single-column layout */
 @media all and (max-width: 640px)
 {
-	#content h2 { font-size: 30px; text-align: center; padding: 0; }
+	#content h2 { font-size: 3em; text-align: center; padding: 0; }
 	#side { width: 100%; margin: 0 auto; }
 	#side img { width: 70%; }
 	#about { float: left; width: 100%; padding-top: 80px; }
-	#about p { font-size: 18px; line-height: 30px; }
-	#about p .bigtext { font-size: 30px; }
+	#about p { font-size: 1.2em; line-height: 2em; }
+	#about p .bigtext { font-size: 2.5em; }
 	#projects .preview { width: 100%; }
-	#projects h3 { font-size: 22px; padding-bottom: 10px; text-align: center; }
-	#projects ul li > p { font-size: 18px; }
+	#projects h3 { font-size: 1.5em; padding-bottom: 1em; text-align: center; }
+	#projects ul li > p { font-size: 1.2em; }
 	#projects .links { margin: 0 auto; }
 }
