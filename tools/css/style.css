@@ -128,7 +128,7 @@ header, header nav, header nav a, header nav a img, #content, #side, #side img, 
 }
 
 /* Single-column layout */
-@media all and (max-width: 640px)
+@media all and (max-width: 640px), only screen and (-webkit-min-device-pixel-ratio: 2)
 {
 	#content h2 { font-size: 30px; text-align: center; padding: 0; }
 	#side { width: 100%; margin: 0 auto; }
