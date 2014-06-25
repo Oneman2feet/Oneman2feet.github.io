@@ -32,7 +32,7 @@ header nav a img { height: 64px; margin-top: 8px; }
 
 /* COLUMNS */
 #intro { width: 100%; }
-#side { float: left; width: 400px; height: 100%; /*padding-bottom: 30px;*/ text-align: center; }
+#side { float: left; width: 400px; height: 100%; text-align: center; }
 
 /* ABOUT */
 #about p  { font-size: 1.3em; line-height: 35px; padding: 10px 40px; }
@@ -74,14 +74,6 @@ header nav a img { height: 64px; margin-top: 8px; }
 .preview:hover { border-color: #6E6E6E; }
 .preview:hover .screen { opacity: 0; }
 
-/*
-@media all and (max-width: 1000px)
-{
-	#content h3 { text-align: center; }
-	.preview { float: none; width: 100%; margin-bottom: 30px; margin: 0 auto; }
-	#projects ul li > p { padding: 10px 20px; width: 100%; }
-}
-*/
 
 /* STICKY FOOTER */
 #content:after { content: ""; display: block; }
