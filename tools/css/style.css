@@ -11,9 +11,9 @@ header nav a { display: block; float: left; width: 100px; height: 100%; }
 header nav a:hover, header nav a:active, header nav a:focus { background: rgba(0,0,0,0.5); }
 header nav a img { height: 64px; margin-top: 8px; }
 
-/* SPLASH SCREEN */
-#splash { width: 100%; max-width: 1700px; padding-top: 80px; margin: 0 auto; }
-#splash object { width: 100%; }
+/* BANNER */
+#banner { width: 100%; max-width: 1700px; padding-top: 80px; margin: 0 auto; }
+#banner object { width: 100%; }
 
 /* UNIVERSAL STYLING */
 #content
