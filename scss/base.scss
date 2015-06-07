@@ -68,6 +68,7 @@ h1 {
 
 nav {
   display: inline-block;
+  width: $nav-width;
   vertical-align: top;
 
   &.sticky ul {
@@ -135,6 +136,7 @@ footer p {
   margin: 0;
   padding: 0 1rem;
   line-height: $foot-height;
+  font-size: 0.8rem;
   text-align: left;
   box-sizing: border-box;
 }
