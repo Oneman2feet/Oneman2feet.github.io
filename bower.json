@@ -1,0 +1,26 @@
+{
+  "name": "Oneman2feet.github.io",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Oneman2feet/Oneman2feet.github.io",
+  "authors": [
+    "Zachary Zimmerman <Oneman2feet@gmail.com>"
+  ],
+  "description": "A personal site for Zachary T. Zimmerman",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "normalize.css": "~3.0.3"
+  },
+  "dependencies": {
+    "normalize.css": "~3.0.3"
+  }
+}

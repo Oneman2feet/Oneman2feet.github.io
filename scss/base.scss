@@ -1,0 +1,64 @@
+$background-color: #F6F5E9;
+$accent-color: #CC3F3F;
+$text-color: #221923;
+
+$baseline: 1.5rem;
+
+body {
+  color: $text-color;
+  background-color: $background-color;
+  font-family: 'Maven Pro', sans-serif;
+  text-align: center;
+}
+
+main {
+  display: inline-block;
+}
+
+nav {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 4.2rem;
+
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+
+    li {
+      text-align: right;
+
+      a {
+        margin: 0 $baseline / 2;
+        font-size: $baseline * 0.8;
+        line-height: $baseline * 1.5;
+        font-weight: 900;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: $accent-color;
+
+        &:hover {
+          border-bottom: 3px solid;
+        }
+      }
+    }
+  }
+}
+
+article {
+  display: inline-block;
+  text-align: left;
+  width: 35rem;
+
+  h1 {
+    font-size: 2rem;
+    line-height: 2.6rem;
+    margin: 1rem 0;
+  }
+
+  p {
+    font-size: $baseline * 0.7;
+    line-height: $baseline;
+    margin: 0 0 $baseline 0;
+  }
+}
