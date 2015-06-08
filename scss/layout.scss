@@ -122,7 +122,7 @@ article {
   }
 }
 
-@media (max-width: $nav-width+$article-width) {
+@media (max-width: $nav-width+$article-width), (max-width: 800) {
   h1 {
     font-size: 1.6rem;
   }
