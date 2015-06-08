@@ -1,0 +1,167 @@
+$baseline: 1.5rem;
+$gutter: 1rem;
+
+$article-width: 35rem;
+$nav-width: 8rem;
+$head-height: 4rem;
+
+main {
+  width: $nav-width + $article-width;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+header {
+  height: $head-height;
+
+  h1 {
+    width: 100vw;
+    height: $head-height;
+    max-width: $article-width;
+    float: left;
+    text-align: left;
+    box-sizing: border-box;
+    padding: $gutter;
+    margin: 0;
+  }
+}
+
+footer {
+  height: $baseline;
+
+  p {
+    width: 100vw;
+    max-width: $article-width;
+    float: left;
+    text-align: left;
+    box-sizing: border-box;
+    padding: 0 $gutter;
+    margin: 0;
+    line-height: $baseline;
+  }
+}
+
+header, footer {
+  text-align: left;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    float: left;
+    width: $nav-width;
+    margin: 0;
+    height: 100%;
+  }
+}
+
+nav {
+  display: inline-block;
+  width: $nav-width;
+  vertical-align: top;
+
+  &.sticky ul {
+    position: fixed;
+    top: 0;
+  }
+
+  ul {
+    padding: 1.9rem 0 0 $gutter;
+    margin: 0;
+    width: $nav-width;
+    box-sizing: border-box;
+    list-style-type: none;
+
+    li {
+      text-align: right;
+
+      a {
+        font-size: $baseline * 0.8;
+        line-height: $baseline * 1.5;
+        font-weight: 900;
+        text-transform: uppercase;
+
+        &:hover {
+          border-bottom: 3px solid;
+        }
+      }
+    }
+  }
+}
+
+article {
+  display: inline-block;
+  text-align: left;
+  max-width: $article-width;
+  padding: 0 $gutter;
+  box-sizing: border-box;
+
+  h2 {
+    line-height: $baseline;
+    margin: 0 0 $baseline/2 0;
+  }
+
+  h3 {
+    line-height: $baseline;
+    margin: 0;
+  }
+
+  p {
+    line-height: $baseline;
+    margin: 0 0 $baseline 0;
+  }
+}
+
+@media (max-width: $nav-width+$article-width) {
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  header, footer {
+    width: 100vw;
+    height: auto;
+
+    h1, p {
+      max-width: 100%;
+      height: auto;
+      padding: 0 $gutter;
+    }
+
+    &::before {
+      content: none;
+    }
+  }
+
+  nav {
+    width: 100vw;
+    padding-bottom: $baseline/2;
+
+    &.sticky ul {
+      position: relative;
+    }
+
+    ul {
+      width: 100%;
+      padding: 0 $gutter;
+
+      li {
+        display: inline-block;
+        padding-right: $gutter;
+
+        a {
+          font-size: 0.9rem;
+          line-height: $baseline;
+        }
+      }
+    }
+  }
+
+  main {
+    width: 100vw;
+    max-width: 100vw;
+  }
+}
