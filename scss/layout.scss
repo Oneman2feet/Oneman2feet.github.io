@@ -96,6 +96,10 @@ article {
   padding: 0 $gutter;
   box-sizing: border-box;
 
+  section {
+    margin-bottom: $baseline;
+  }
+
   h2 {
     line-height: $baseline;
     margin: 0 0 $baseline/2 0;
@@ -108,7 +112,13 @@ article {
 
   p {
     line-height: $baseline;
-    margin: 0 0 $baseline 0;
+    margin: 0;
+    padding: 0 0 $baseline/2 0;
+  }
+
+  img {
+    padding: $baseline/2 0;
+    width: 100%;
   }
 }
 
@@ -119,6 +129,10 @@ article {
 
   h2 {
     font-size: 1.2rem;
+  }
+
+  h3 {
+    font-size: 1rem;
   }
 
   header, footer {

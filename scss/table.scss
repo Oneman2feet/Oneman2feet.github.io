@@ -1,13 +1,22 @@
-section ul {
-  margin: 0 -0.5rem;
-  padding: 0;
-  list-style-type: none;
+$gutter: 1rem;
 
-  display: flex;
-  flex-wrap: wrap;
+section {
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 
-  li {
-    margin: 0 0.5rem;
-    flex: 1 0 30%;
+    &.columns {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 (-$gutter/2);
+
+      li {
+        padding: 0 $gutter/2;
+        min-width: 15rem;
+        box-sizing: border-box;
+        flex: 1 0 50%;
+      }
+    }
   }
 }
