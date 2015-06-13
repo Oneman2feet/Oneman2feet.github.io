@@ -1,9 +1,9 @@
-$baseline: 1.5rem;
-$gutter: 1rem;
+$baseline: 1.7rem;
+$gutter: 1.2rem;
 
 $article-width: 35rem;
-$nav-width: 8rem;
-$head-height: 4rem;
+$nav-width: 10rem;
+$head-height: 5rem;
 
 main {
   width: $nav-width + $article-width;
@@ -66,7 +66,7 @@ nav {
   }
 
   ul {
-    padding: 1.9rem 0 0 $gutter;
+    padding: 2.2rem 0 0 $gutter;
     margin: 0;
     width: $nav-width;
     box-sizing: border-box;
@@ -124,15 +124,16 @@ article {
 
 @media (max-width: $nav-width+$article-width) {
   h1 {
-    font-size: 1.6rem;
+    font-size: 1.9em;
+    line-height: 2em;
   }
 
   h2 {
-    font-size: 1.2rem;
+    font-size: 1.3em;
   }
 
   h3 {
-    font-size: 1rem;
+    font-size: 1.1em;
   }
 
   main {
@@ -173,7 +174,7 @@ article {
         padding-right: $gutter;
 
         a {
-          font-size: 0.9rem;
+          font-size: 1rem;
           line-height: $baseline;
         }
       }
