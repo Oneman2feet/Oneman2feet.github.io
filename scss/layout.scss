@@ -123,23 +123,17 @@ article {
 }
 
 @media (max-width: $nav-width+$article-width) {
-  h1 {
-    font-size: 1.9em;
-    line-height: 2em;
-  }
-
-  h2 {
-    font-size: 1.3em;
-  }
-
-  h3 {
-    font-size: 1.1em;
-  }
-
   main {
     width: 100vw;
-    max-width: $article-width;
     margin: 0 auto;
+  }
+
+  header h1 {
+    margin: $baseline/2 0;
+  }
+
+  footer p {
+    font-size: 1em;
   }
 
   header, footer {
@@ -174,10 +168,22 @@ article {
         padding-right: $gutter;
 
         a {
-          font-size: 1rem;
-          line-height: $baseline;
+          font-size: 1.2rem;
         }
       }
+    }
+  }
+
+  article {
+    max-width: 100%;
+
+    p {
+      font-size: 1.2em;
+    }
+
+    img {
+      width: 100vw;
+      margin-left: -$gutter;
     }
   }
 }

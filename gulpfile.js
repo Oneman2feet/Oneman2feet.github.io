@@ -29,6 +29,7 @@ gulp.task('sass', function() {
   gulp.src(lib.ext('css').files.concat(sassFiles))
     .pipe(order([
       'normalize.css',
+      'base.scss',
       '*'
     ]))
     .pipe(plumber({
