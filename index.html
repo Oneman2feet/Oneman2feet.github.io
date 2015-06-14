@@ -103,6 +103,8 @@
     </ul>
   </section>
 
+  <a class="elevator-button" href="#">Back to Top</a>
+
 </article>
 
 <footer>
@@ -112,6 +114,17 @@
 </main>
 
 <script type="text/javascript" src="dist/all.min.js"></script>
+
+<script>
+window.onload = function() {
+  var elevator = new Elevator({
+    element: document.querySelector('.elevator-button'),
+    mainAudio: 'dist/music/elevator.mp3',
+    endAudio: 'dist/music/ding.mp3'
+  });
+}
+</script>
+
 </body>
 
 </html>

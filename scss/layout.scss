@@ -94,6 +94,7 @@ article {
   text-align: left;
   max-width: $article-width;
   padding: 0 $gutter;
+  margin-bottom: $baseline;
   box-sizing: border-box;
 
   section {
