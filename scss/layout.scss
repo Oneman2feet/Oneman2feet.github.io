@@ -189,8 +189,8 @@ article {
       font-size: 1.2em;
     }
 
-    img {
-      width: 100vw;
+    img, video {
+      width: 100vw !important;
       margin-left: -$gutter;
     }
   }
