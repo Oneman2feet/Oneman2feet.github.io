@@ -96,6 +96,13 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(48,-584.58979)">
+    <rect
+       style="color:#000000;fill:#f6f5e9;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect2991"
+       width="64"
+       height="64"
+       x="-48"
+       y="584.58978" />
     <text
        xml:space="preserve"
        style="font-size:144px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:SimSun-ExtB;-inkscape-font-specification:SimSun-ExtB"
@@ -117,12 +124,12 @@
        id="path6090"
        inkscape:connector-curvature="0" />
     <g
-       transform="matrix(1.2889054,0,0,1.2889054,-90.799309,482.98498)"
+       transform="matrix(1.395996,0,0,1.395996,-97.014118,471.88423)"
        style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#cc3f3f;fill-opacity:1;stroke:none;font-family:SimSun-ExtB;-inkscape-font-specification:SimSun-ExtB"
        id="flowRoot3010">
       <path
          d="m 43.636719,122.33336 0,-7.95703 16.871093,-20.835939 -16.707031,0 0,-8.558594 28.628906,0 0,7.792969 -16.351562,21.109374 16.351562,0 0,8.44922 -28.792968,0"
-         style="font-size:56px;font-weight:900;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Maven Pro;-inkscape-font-specification:Maven Pro Heavy;fill:#cc3f3f;fill-opacity:1"
+         style="font-size:56px;font-weight:900;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#cc3f3f;fill-opacity:1;font-family:Maven Pro;-inkscape-font-specification:Maven Pro Heavy"
          id="path3019"
          inkscape:connector-curvature="0" />
     </g>
