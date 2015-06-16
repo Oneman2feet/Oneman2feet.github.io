@@ -121,6 +121,13 @@ article {
     padding: $baseline/2 0;
     width: 100%;
   }
+
+  video {
+    margin: 0;
+    padding: $baseline/2 0;
+    width: 100% !important;
+    height: auto !important;
+  }
 }
 
 @media (max-width: $nav-width+$article-width) {
