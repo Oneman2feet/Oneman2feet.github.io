@@ -8,10 +8,9 @@ section {
 
     &.table {
       width: 100%;
-      display: -webkit-flex;
-      display: -moz-box;
       display: flex;
       flex-wrap: wrap;
+      flex-direction: column-reverse;
       overflow-x: scroll;
       margin: 0 (-$gutter/2);
 
