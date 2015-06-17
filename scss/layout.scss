@@ -179,6 +179,12 @@ article {
           font-size: 1.2rem;
         }
       }
+
+      &.columns li {
+        padding: 0;
+        width: 100%;
+        flex: 1 0 100%;
+      }
     }
   }
 
