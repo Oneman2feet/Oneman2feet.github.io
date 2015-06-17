@@ -7,7 +7,6 @@ body {
   color: $text-color;
   background-color: $background-color;
   font-family: 'Maven Pro', sans-serif;
-  hyphens: auto;
 }
 
 a {
@@ -39,6 +38,7 @@ h3 {
 p {
   font-size: 1.1em;
   font-weight: 400;
+  hyphens: auto;
 }
 
 .elevator-button {

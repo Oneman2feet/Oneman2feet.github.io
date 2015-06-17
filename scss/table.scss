@@ -13,3 +13,9 @@ ul.table {
     flex: 1 0 50%;
   }
 }
+
+@media (max-width: 2*$colsize+2*$gutter) {
+  ul.table {
+    display: block;
+  }
+}
