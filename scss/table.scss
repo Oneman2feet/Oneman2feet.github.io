@@ -2,10 +2,9 @@ $gutter: 1rem;
 $colsize: 15rem;
 
 ul.table {
-  padding: 0;
-  margin: 0 (-$gutter/2);
   display: flex;
   flex-wrap: wrap;
+  margin: 0 (-$gutter/2);
 
   li {
     padding: 0 $gutter/2;
