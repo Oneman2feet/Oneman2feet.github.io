@@ -1,28 +1,16 @@
 $gutter: 1rem;
-$colsize: 30rem;
+$colsize: 15rem;
 
-section {
-  ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+ul.table {
+  padding: 0;
+  margin: 0 (-$gutter/2);
+  display: flex;
+  flex-wrap: wrap;
 
-    &.table {
-      display: flex;
-      flex-wrap: wrap;
-      margin: 0 (-$gutter/2);
-
-      li {
-        padding: 0 $gutter/2;
-        box-sizing: border-box;
-        flex: 1 0 50%;
-      }
-    }
-  }
-}
-
-@media (max-width: $colsize) {
-  section ul.table {
-    flex-direction: column;
+  li {
+    padding: 0 $gutter/2;
+    min-width: $colsize;
+    box-sizing: border-box;
+    flex: 1 0 50%;
   }
 }
