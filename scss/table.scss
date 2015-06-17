@@ -14,9 +14,8 @@ section {
 
       li {
         padding: 0 $gutter/2;
-        min-width: $colsize;
         box-sizing: border-box;
-        flex: 1;
+        flex: 1 0 50%;
       }
     }
   }
