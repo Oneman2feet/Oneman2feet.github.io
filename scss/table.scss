@@ -8,6 +8,8 @@ section {
 
     &.table {
       width: 100%;
+      display: -webkit-flex;
+      display: -moz-box;
       display: flex;
       flex-wrap: wrap;
       overflow-x: scroll;
