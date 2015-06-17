@@ -1,4 +1,5 @@
 $gutter: 1rem;
+$colsize: 30rem;
 
 section {
   ul {
@@ -7,19 +8,22 @@ section {
     margin: 0;
 
     &.table {
-      width: 100%;
       display: flex;
       flex-wrap: wrap;
-      flex-direction: column-reverse;
-      overflow-x: scroll;
       margin: 0 (-$gutter/2);
 
       li {
         padding: 0 $gutter/2;
-        min-width: 15rem;
+        min-width: $colsize;
         box-sizing: border-box;
         flex: 1;
       }
     }
+  }
+}
+
+@media (max-width: $colsize) {
+  section ul.table {
+    flex-direction: column;
   }
 }
