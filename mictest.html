@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+  <title>HilbertJS</title>
+  <script>
+    if (navigator.webkitGetUserMedia) {  
+      navigator.webkitGetUserMedia(
+        // First parameter - so-called constraints;
+        // in this example - preferable parameters of the requested stream 
+        {
+          audio: true,  // requesting audio,...
+          video: true   // ...and video
+        },
+        // Second parameter - callback function in case of success
+        function(stream) { // as a parameter object LocalMediaStream is passed to function
+          console.log('Stream:', stream);
+        },
+        // Third parameter - callback function, called in case of error
+        function(error) { // error object is passing to the function as a parameter
+          console.log('Error:', error);
+        }
+      )
+    } else {
+      console.log('navigator.webkitGetUserMedia not supported. Are you using latest Chrome/Chromium?');
+    }
+  </script>
+</head>
+
+<body>
+<div id="demo" class="" style="height: 569px;">
+  <canvas width="820" height="549" style="background-color: rgb(93, 177, 162);"></canvas>
+  <canvas width="820" height="549"></canvas>
+</div>
+</body>
+
+</html>
