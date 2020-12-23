@@ -255,6 +255,70 @@ function updateDynamicTuning(noteToPlay) {
     }
 }
 
+function setupMidiInput() {
+    var midiName = document.getElementById("selectMidi").value;
+
+    if (midiName!==undefined) {
+        // Retrieve an input by name, id or index
+        var input = WebMidi.getInputByName(midiName);
+
+        if (input!==false) {
+            // Listen for a 'note on' message on all channels
+            input.addListener('noteon', "all", function (e) {
+                // convert from midi to scale
+                var note = tune.note(e.note.number - fundamental['semitonesFromC3'] - 60, 1);
+
+                // keep track of this note
+                var notename = e.note.name + e.note.octave;
+                if (activeNotes[notename]) {
+                    console.log("this key is already pressed: " + notename);
+                    synth.triggerRelease([activeNotes[notename]], Tone.now());
+                }
+                else {
+                    activeNotes[notename] = note;
+                }
+
+                // play note
+                //synth.triggerAttack(note, Tone.now(), volOfFreq(note));//, e.velocity);
+
+                updateMetrics();
+
+                // dynamic tuning
+                if (document.getElementById("dynamic").checked) {
+                    updateDynamicTuning(note); // this also plays the note
+                    updateMetrics();
+                }
+                else {
+                    synth.triggerAttack(note, Tone.now(), volOfFreq(note));//, e.velocity);
+                }
+            });
+
+            // Listen for a 'note off' message on all channels
+            input.addListener('noteoff', "all", function (e) {
+                // release the note(s) that are currently held from this midi key
+                var notename = e.note.name + e.note.octave;
+                if (activeNotes[notename]) {
+                    synth.triggerRelease([activeNotes[notename]], Tone.now());
+                    delete activeNotes[notename];
+                }
+                else {
+                    console.log("released note that was not pressed: " + notename);
+                }
+
+                updateMetrics();
+
+                // dynamic tuning
+                if (document.getElementById("dynamic").checked) {
+                    updateDynamicTuning();
+                    updateMetrics();
+                }
+            });
+
+            return true; // was able to set up properly
+        }
+    }
+}
+
 window.onload = function() {
     // Controls
     [...document.getElementsByName("temperament")].forEach((elem) => {
@@ -285,106 +349,55 @@ window.onload = function() {
 
     // Start audio system
     document.getElementById("enterBtn").addEventListener('click', async () => {
-        await Tone.start();
+        var succeeded = setupMidiInput();
 
-        // create a synth and connect it to the main output (your speakers)
-        synth = new Tone.PolySynth().toDestination();
+        if (succeeded) {
+            await Tone.start();
 
-        synth.set({
-            "envelope": {
-                "attack": 0.1,
-                "decay": 0
-            },
-            "oscillator": {
-                "type": "custom", // set to "custom" for partials to be used
-                "partialCount": 16,
-                "partials": [
-                    1, 0.1, 0.2, 0.1, 0.2, 0.01,
-                    0.008, 0.008, 0.0025, 0.004, 0.0025, 0.0025, 0.004, 0.0025, 0.0005, 0.0025
-                ]
-            }
-        });
+            // create a synth and connect it to the main output (your speakers)
+            synth = new Tone.PolySynth().toDestination();
 
-        // set the volume
-        synth.volume.value = 8.3 + 1000 / (-document.getElementById("volslider").value-20);
+            synth.set({
+                "envelope": {
+                    "attack": 0.1,
+                    "decay": 0
+                },
+                "oscillator": {
+                    "type": "custom", // set to "custom" for partials to be used
+                    "partialCount": 16,
+                    "partials": [
+                        1, 0.1, 0.2, 0.1, 0.2, 0.01,
+                        0.008, 0.008, 0.0025, 0.004, 0.0025, 0.0025, 0.004, 0.0025, 0.0005, 0.0025
+                    ]
+                }
+            });
 
-        // create a Tune.js instance
-        tune = new Tune();
+            // set the volume
+            synth.volume.value = 8.3 + 1000 / (-document.getElementById("volslider").value-20);
 
-        // Load the selected scale
-        var scale = document.querySelector('input[name="temperament"]:checked').value;
-        tune.loadScale(scale);
+            // create a Tune.js instance
+            tune = new Tune();
 
-        // Set the fundamental using equal temperament and checked tonic
-        var semitones = document.querySelector('input[name="tonic"]:checked').value;
-        var freq = Tone.Frequency("C3").transpose(semitones).toFrequency();
-        setFundamental(freq, semitones);
+            // Load the selected scale
+            var scale = document.querySelector('input[name="temperament"]:checked').value;
+            tune.loadScale(scale);
 
-        // change UI
-        document.getElementById("enterScreen").className = "entered";
+            // Set the fundamental using equal temperament and checked tonic
+            var semitones = document.querySelector('input[name="tonic"]:checked').value;
+            var freq = Tone.Frequency("C3").transpose(semitones).toFrequency();
+            setFundamental(freq, semitones);
+
+            // change UI
+            document.getElementById("enterScreen").className = "entered";
+        }
     });
 }
 
 WebMidi.enable(function (err) {
-    console.log(WebMidi.inputs);
-    console.log(WebMidi.outputs);
-
-    // Retrieve an input by name, id or index
-    //var input = WebMidi.getInputByName("MPKmini2");
-    var input = WebMidi.getInputByName("loopMIDI Port");
-
-    // Listen for a 'note on' message on all channels
-    input.addListener('noteon', "all",
-        function (e) {
-            // convert from midi to scale
-            var note = tune.note(e.note.number - fundamental['semitonesFromC3'] - 60, 1);
-
-            // keep track of this note
-            var notename = e.note.name + e.note.octave;
-            if (activeNotes[notename]) {
-                console.log("this key is already pressed: " + notename);
-                synth.triggerRelease([activeNotes[notename]], Tone.now());
-            }
-            else {
-                activeNotes[notename] = note;
-            }
-
-            // play note
-            //synth.triggerAttack(note, Tone.now(), volOfFreq(note));//, e.velocity);
-
-            updateMetrics();
-
-            // dynamic tuning
-            if (document.getElementById("dynamic").checked) {
-                updateDynamicTuning(note); // this also plays the note
-                updateMetrics();
-            }
-            else {
-                synth.triggerAttack(note, Tone.now(), volOfFreq(note));//, e.velocity);
-            }
-        }
-    );
-
-    // Listen for a 'note off' message on all channels
-    input.addListener('noteoff', "all",
-        function (e) {
-            // release the note(s) that are currently held from this midi key
-            var notename = e.note.name + e.note.octave;
-            if (activeNotes[notename]) {
-                synth.triggerRelease([activeNotes[notename]], Tone.now());
-                delete activeNotes[notename];
-            }
-            else {
-                console.log("released note that was not pressed: " + notename);
-            }
-
-            updateMetrics();
-
-            // dynamic tuning
-            if (document.getElementById("dynamic").checked) {
-                updateDynamicTuning();
-                updateMetrics();
-            }
-        }
-    );
+    for (input in WebMidi.inputs) {
+        var option = document.createElement("option");
+        option.value = WebMidi.inputs[input].name;
+        option.innerHTML = WebMidi.inputs[input].name;
+        document.getElementById("selectMidi").appendChild(option);
+    }
 });
