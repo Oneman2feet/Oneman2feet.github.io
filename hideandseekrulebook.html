@@ -59,6 +59,27 @@
             padding-bottom: 8px;
             border-bottom: 2px solid #333;
         }
+
+        .nav-title {
+            display: block;
+            padding: 8px 12px;
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border-radius: 4px;
+            margin-bottom: 2px;
+        }
+
+        .nav-title:hover {
+            background: #333;
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .nav-title.active {
+            background: #ff4444;
+            color: white;
+        }
         
         .nav-item {
             display: block;
@@ -305,10 +326,10 @@
     <div class="container">
         <!-- Navigation Sidebar -->
         <nav class="sidebar">
-            <h2>HIDE+SEEK</h2>
+            <h2><a href="#cover" class="nav-title">HIDE+SEEK</a></h2>
             
             <div class="nav-section">
-                <div class="nav-section-title">Quickstart Guide</div>
+                <div class="nav-section-title"><a href="#quickstart-guide" class="nav-title">Quickstart Guide</a></div>
                 <a href="#overview" class="nav-item">Overview</a>
                 <a href="#game-size" class="nav-item">Choosing Game Size</a>
                 <a href="#teams" class="nav-item">Creating Teams</a>
@@ -322,7 +343,7 @@
             </div>
             
             <div class="nav-section">
-                <div class="nav-section-title">Setting Up Your Map</div>
+                <div class="nav-section-title"><a href="#setting-your-map" class="nav-title">Setting Up Your Map</a></div>
                 <a href="#transit" class="nav-item">Choosing a Transit System</a>
                 <a href="#borders" class="nav-item">Setting Map Borders</a>
                 <a href="#rest" class="nav-item">Considering Rest Periods</a>
@@ -330,7 +351,7 @@
             </div>
             
             <div class="nav-section">
-                <div class="nav-section-title">Seeking</div>
+                <div class="nav-section-title"><a href="#seeking" class="nav-title">Seeking</a></div>
                 <a href="#mapping" class="nav-item">Mapping Apps & Errors</a>
                 <a href="#matching" class="nav-item">Matching Questions</a>
                 <a href="#measuring" class="nav-item">Measuring Questions</a>
@@ -341,18 +362,18 @@
             </div>
             
             <div class="nav-section">
-                <div class="nav-section-title">Hiding</div>
+                <div class="nav-section-title"><a href="#hiding" class="nav-title">Hiding</a></div>
                 <a href="#hiding-zones-detail" class="nav-item">Hiding Zones</a>
                 <a href="#hiding-spots" class="nav-item">Hiding Spots</a>
                 <a href="#hider-deck-detail" class="nav-item">The Hider Deck</a>
             </div>
             
             <div class="nav-section">
-                <div class="nav-section-title">General Tips</div>
+                <div class="nav-section-title"><a href="#general-tips" class="nav-title">General Tips</a></div>
             </div>
             
             <div class="nav-section">
-                <div class="nav-section-title">Experimental Designs</div>
+                <div class="nav-section-title"><a href="#experimental-designs" class="nav-title">Experimental Designs</a></div>
                 <a href="#cars" class="nav-item">Playing With Cars</a>
                 <a href="#two-teams" class="nav-item">Two Teams of Seekers</a>
                 <a href="#global" class="nav-item">Global Hide and Seek</a>
@@ -362,7 +383,7 @@
         <!-- Main Content Area -->
         <main class="main-content">
             <!-- Cover Page -->
-            <div class="cover-page">
+            <div class="cover-page" id="cover">
                 <div class="jet-lag-logo">
                     JET LAG <span class="badge">THE GAME</span>
                 </div>
@@ -380,7 +401,7 @@
             </div>
             
             <!-- Section 1: Quickstart Guide -->
-            <div class="section-header">SECTION 1<br>QUICKSTART GUIDE</div>
+            <div class="section-header" id="quickstart-guide">SECTION 1<br>QUICKSTART GUIDE</div>
             
             <h2 id="overview">Overview</h2>
             
@@ -500,7 +521,7 @@
             <p>After each player has completed the predetermined number of hiding rounds, <strong>the player with the longest single hiding run is declared the winner</strong>.</p>
             
             <!-- Section 2: Setting Up Your Map -->
-            <div class="section-header">SECTION 2<br>SETTING UP YOUR MAP</div>
+            <div class="section-header" id="setting-your-map">SECTION 2<br>SETTING UP YOUR MAP</div>
             
             <p>Our goal, when designing <em>Hide and Seek</em>, was to make a game that can be played almost anywhere in the world. In order to accomplish this, we established a few simple steps that should generate a viable game map wherever you choose to play. Here's how to set the parameters of your game:</p>
             
@@ -550,7 +571,7 @@
             <p>Generally, <em>Hide and Seek</em> ends once the predetermined number of rounds is complete. If, however, you're playing with a hard out <em>(i.e. you have a flight home or, you know, need to go to school/work)</em> we would also recommend setting an end-of-game timer. In that case, the game would end whenever you reach the predetermined number of rounds or the timer runs out, whichever comes first.</p>
             
             <!-- Section 3: Seeking -->
-            <div class="section-header">SECTION 3<br>SEEKING</div>
+            <div class="section-header" id="seeking">SECTION 3<br>SEEKING</div>
             
             <p>As the seeker, it is your job to move and gather information as efficiently as possible. At your disposal are 80 questions, which you can ask the hider at any time. The hider must answer all of your questions truthfully, but in exchange for answers, they'll be rewarded with cards from their hider deck. Choosing the right questions at the right time is the key to a quick round—ask too many and you'll be bogged down with curses or blown out with hours of time bonuses.</p>
             
@@ -982,8 +1003,8 @@
             </div>
             
             <!-- Section 4: Hiding -->
-            <div class="section-header">SECTION 4<br>HIDING</div>
-            
+            <div class="section-header" id="hiding">SECTION 4<br>HIDING</div>
+
             <p>As the hider, it is your job to stay hidden for as long as possible: stay hidden for longer than anyone else, and the game is yours. At the start of each run, you'll be given a certain amount of time to choose—and travel to—a hiding zone somewhere on your map. While the seekers close in, you'll have to juggle the tasks of answering questions, scoping out a perfect final hiding spot, and assembling the perfect hand using cards from the hider deck.</p>
             
             <h2 id="hiding-zones-detail">Hiding Zones</h2>
@@ -1137,7 +1158,7 @@
             <p>The default hider deck includes a set of curse cards that we believe are well-balanced and should be doable in <em>most</em> conditions, but it is entirely possible that there are curses that are <strong>not possible</strong> or at least not feasible given the scope or area of your game. There are also curses that may require spending small amounts of money—or are otherwise undesirable for the vibe that you are trying to cultivate—that you may want to take out of the deck. If you decide to remove any curses, we'd encourage you to use the blank cards to write some custom curses of your own to replace them. Generally, we recommend that your deck be about <strong>50% time bonus cards, 25% powerup cards, and 25% curses</strong>, but these ratios can be adjusted up or down depending on how much agency you want to give the hider.</p>
             
             <!-- Section 5: General Tips -->
-            <div class="section-header">SECTION 5<br>GENERAL TIPS</div>
+            <div class="section-header" id="general-tips">SECTION 5<br>GENERAL TIPS</div>
             
             <p>Make no mistake, <em>Hide and Seek</em> is a physically and mentally demanding game. Particularly for medium and large games, which can last multiple days, adequate preparation is hugely important and should not be disregarded when organizing your game. Here are a few tips for staying healthy and comfortable while playing <em>Hide and Seek</em>:</p>
             
@@ -1158,7 +1179,7 @@
             <p>Also for safety reasons, it's a good idea for the <strong>hider and seekers to share their locations with a third party who is not playing the game</strong>. Should anything unexpected happen—a weather or health emergency, say—it will be good for someone else to know where you are.</p>
             
             <!-- Section 6: Experimental Game Designs -->
-            <div class="section-header">SECTION 6<br>EXPERIMENTAL GAME DESIGNS</div>
+            <div class="section-header" id="experimental-designs">SECTION 6<br>EXPERIMENTAL GAME DESIGNS</div>
             
             <p>In previous sections, we've detailed the rules for conventional configurations of <em>Hide and Seek</em>. We have, however, considered some alternate versions of the game, and we thought we'd detail those here in case you'd like to try them—or use them as a jumping off point for your own game mode!</p>
             
