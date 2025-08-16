@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jet Lag Hide+Seek Deck</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: white;
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            background: white;
+            padding: 30px;
+            min-height: 100vh;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .icon-btn {
+            width: 45px;
+            height: 45px;
+            border: none;
+            border-radius: 50%;
+            background: #3498db;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .icon-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .hand-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #95a5a6;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 20px;
+        }
+
+        .hand-badge.warning {
+            background: #e74c3c;
+        }
+
+        /* Search dropdown */
+        .search-container {
+            position: relative;
+        }
+
+        .search-dropdown {
+            position: absolute;
+            top: 55px;
+            right: 0;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            min-width: 300px;
+            z-index: 1000;
+            display: none;
+        }
+
+        .search-dropdown.show {
+            display: block;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px 10px 0 0;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-results {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .search-item {
+            padding: 12px 15px;
+            cursor: pointer;
+            border-bottom: 1px solid #ecf0f1;
+            transition: background 0.2s ease;
+        }
+
+        .search-item:hover {
+            background: #f8f9fa;
+        }
+
+        .search-item:last-child {
+            border-bottom: none;
+            border-radius: 0 0 10px 10px;
+        }
+
+        /* Browse dropdown */
+        .browse-container {
+            position: relative;
+        }
+
+        .browse-dropdown {
+            position: absolute;
+            top: 55px;
+            right: 0;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            min-width: 280px;
+            max-height: 400px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+        }
+
+        .browse-dropdown.show {
+            display: block;
+        }
+
+        .category-header {
+            padding: 15px;
+            cursor: pointer;
+            border-bottom: 1px solid #ecf0f1;
+            font-weight: bold;
+            transition: background 0.2s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .category-header:hover {
+            background: #f8f9fa;
+        }
+
+        .category-header:last-child {
+            border-bottom: none;
+        }
+
+        .category-triangle {
+            transition: transform 0.3s ease;
+            font-size: 12px;
+        }
+
+        .category-triangle.expanded {
+            transform: rotate(180deg);
+        }
+
+        .category-cards {
+            display: none;
+            background: #f8f9fa;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        .category-cards.show {
+            display: block;
+        }
+
+        .card-list-item {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid #e9ecef;
+            font-weight: normal;
+            font-size: 14px;
+        }
+
+        .card-list-item:hover {
+            background: #e9ecef;
+        }
+
+        .card-list-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Main content area */
+        .main-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 500px;
+            position: relative;
+        }
+
+        /* Card stack */
+        .card-stack {
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .card-stack:hover {
+            transform: scale(1.05);
+        }
+
+        .deck-visual {
+            width: 180px;
+            height: 250px;
+            background: linear-gradient(135deg, #34495e, #2c3e50);
+            border-radius: 15px;
+            margin: 0 auto 20px;
+            position: relative;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 60px;
+        }
+
+        .deck-visual::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            width: 186px;
+            height: 256px;
+            background: linear-gradient(135deg, #4a5f7a, #34495e);
+            border-radius: 15px;
+            z-index: -1;
+        }
+
+        .deck-visual::after {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            width: 192px;
+            height: 262px;
+            background: linear-gradient(135deg, #5a6f8a, #4a5f7a);
+            border-radius: 15px;
+            z-index: -2;
+        }
+
+        .deck-message {
+            font-size: 18px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        .deck-counter {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+
+        .reset-btn {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .reset-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .reset-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #e67e22;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .reset-label {
+            font-size: 14px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        /* Card display */
+        .card-display {
+            position: relative;
+            display: none;
+        }
+
+        .card {
+            width: 280px;
+            height: 400px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .card.time-bonus {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+        }
+
+        .card.powerup {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            color: white;
+        }
+
+        .card.curse {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+        }
+
+        .card-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .card-close:hover {
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin-bottom: 15px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .card-description {
+            font-size: 11px;
+            line-height: 1.3;
+            flex: 1;
+            overflow-y: auto;
+            margin-bottom: 10px;
+        }
+
+        .card-cost {
+            font-size: 10px;
+            opacity: 0.9;
+            font-style: italic;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        .card-values {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .card-value {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Hand overlay */
+        .hand-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hand-overlay.show {
+            display: flex;
+        }
+
+        .hand-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .hand-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 30px;
+            height: 30px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hand-title {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .hand-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 110px);
+            gap: 15px;
+            justify-content: center;
+            max-width: 100%;
+        }
+
+        @media (max-width: 400px) {
+            .hand-cards {
+                grid-template-columns: repeat(auto-fit, 85px);
+                gap: 10px;
+            }
+        }
+
+        .hand-card {
+            background: #f8f9fa;
+            border-radius: 6px;
+            padding: 8px;
+            text-align: center;
+            position: relative;
+            border-left: 3px solid #3498db;
+            width: 110px;
+            height: 157px;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 400px) {
+            .hand-card {
+                width: 85px;
+                height: 121px;
+            }
+        }
+
+        .hand-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .hand-card.time-bonus {
+            border-left-color: #f39c12;
+            background: linear-gradient(135deg, rgba(243, 156, 18, 0.1), rgba(230, 126, 34, 0.1));
+        }
+
+        .hand-card.powerup {
+            border-left-color: #9b59b6;
+            background: linear-gradient(135deg, rgba(155, 89, 182, 0.1), rgba(142, 68, 173, 0.1));
+        }
+
+        .hand-card.curse {
+            border-left-color: #e74c3c;
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), rgba(192, 57, 43, 0.1));
+        }
+
+        .hand-card-icon {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .hand-card-title {
+            font-weight: bold;
+            margin-bottom: 6px;
+            color: #2c3e50;
+            font-size: 9px;
+            flex: 1;
+            line-height: 1.1;
+        }
+
+        .hand-card-discard {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .hand-card-discard:hover {
+            background: #c0392b;
+            transform: scale(1.05);
+        }
+
+        .empty-hand {
+            text-align: center;
+            color: #7f8c8d;
+            font-style: italic;
+            margin: 50px 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .search-dropdown, .browse-dropdown {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                max-width: 90vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Jet Lag Hide+Seek Deck</h1>
+            <div class="controls">
+                <div class="browse-container">
+                    <button class="icon-btn" id="browseBtn">☰</button>
+                    <div class="browse-dropdown" id="browseDropdown">
+                        <div class="category-header" data-category="time-bonus">
+                            Time Bonus
+                            <span class="category-triangle">▼</span>
+                        </div>
+                        <div class="category-cards" data-category="time-bonus"></div>
+                        
+                        <div class="category-header" data-category="powerup">
+                            Powerup
+                            <span class="category-triangle">▼</span>
+                        </div>
+                        <div class="category-cards" data-category="powerup"></div>
+                        
+                        <div class="category-header" data-category="curse">
+                            Curse
+                            <span class="category-triangle">▼</span>
+                        </div>
+                        <div class="category-cards" data-category="curse"></div>
+                    </div>
+                </div>
+                
+                <div class="search-container">
+                    <button class="icon-btn" id="searchBtn">🔍</button>
+                    <div class="search-dropdown" id="searchDropdown">
+                        <input type="text" class="search-input" placeholder="Search cards..." id="searchInput">
+                        <div class="search-results" id="searchResults"></div>
+                    </div>
+                </div>
+                
+                <button class="icon-btn" id="handBtn">
+                    ✋
+                    <span class="hand-badge" id="handBadge" style="display: none;">0</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <!-- Default view: Card stack -->
+            <div class="card-stack" id="cardStack">
+                <div class="deck-visual">🂠</div>
+                <div class="deck-message">Draw a card</div>
+                <div class="deck-counter" id="deckCounter">52 cards remaining</div>
+                <div class="reset-btn" id="resetBtn">
+                    <div class="reset-icon">🔄</div>
+                    <div class="reset-label">Reset Deck</div>
+                </div>
+            </div>
+            
+            <!-- Card display -->
+            <div class="card-display" id="cardDisplay">
+                <div class="card" id="card">
+                    <button class="card-close" id="cardClose">×</button>
+                    <div class="card-icon"></div>
+                    <div class="card-title"></div>
+                    <div class="card-description"></div>
+                    <div class="card-cost"></div>
+                    <div class="card-values"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Hand overlay -->
+    <div class="hand-overlay" id="handOverlay">
+        <div class="hand-container">
+            <button class="hand-close" id="handClose">×</button>
+            <h2 class="hand-title">Your Hand</h2>
+            <div class="hand-cards" id="handCards"></div>
+        </div>
+    </div>
+
+    <script>
+        // Card database with exact content from image
+        const cardDatabase = {
+            "time-bonus": [
+                {
+                    name: "Time Bonus Red",
+                    type: "time-bonus",
+                    icon: "⏰",
+                    description: "Add bonus time to your current turn.",
+                    values: [2, 3, 5],
+                    count: 25,
+                    color: "red"
+                },
+                {
+                    name: "Time Bonus Dark Orange",
+                    type: "time-bonus",
+                    icon: "⏰",
+                    description: "Add bonus time to your current turn.",
+                    values: [4, 6, 10],
+                    count: 15,
+                    color: "orange"
+                },
+                {
+                    name: "Time Bonus Light Orange",
+                    type: "time-bonus",
+                    icon: "⏰",
+                    description: "Add bonus time to your current turn.",
+                    values: [6, 9, 15],
+                    count: 10,
+                    color: "orange"
+                },
+                {
+                    name: "Time Bonus Green",
+                    type: "time-bonus",
+                    icon: "⏰",
+                    description: "Add bonus time to your current turn.",
+                    values: [8, 12, 20],
+                    count: 3,
+                    color: "green"
+                },
+                {
+                    name: "Time Bonus Blue",
+                    type: "time-bonus",
+                    icon: "⏰",
+                    description: "Add bonus time to your current turn.",
+                    values: [12, 18, 30],
+                    count: 2,
+                    color: "blue"
+                }
+            ],
+            "powerup": [
+                {
+                    name: "Veto Question",
+                    type: "powerup",
+                    icon: "🚫",
+                    description: "Play instead of answering a question. No answer is given, and no reward is earned.",
+                    count: 4
+                },
+                {
+                    name: "Randomize Question",
+                    type: "powerup",
+                    icon: "🎲",
+                    description: "Play instead of answering a question. A new unasked question from the same category is chosen, at random, which you answer instead.",
+                    count: 4
+                },
+                {
+                    name: "Duplicate Another Card",
+                    type: "powerup",
+                    icon: "📋",
+                    description: "Play this card as a copy of any other card in your hand. This may be used to duplicate a time bonus at the end of your round.",
+                    count: 2
+                },
+                {
+                    name: "Draw 1, Expand 1",
+                    type: "powerup",
+                    icon: "➕",
+                    description: "Draw one card from the hider deck. For the rest of the round, you can hold one additional card in your hand.",
+                    count: 2
+                },
+                {
+                    name: "Discard 1, Draw 2",
+                    type: "powerup",
+                    icon: "🔄",
+                    description: "Discard one other card from your hand. Then, draw and keep two cards from the hider deck.",
+                    count: 4
+                },
+                {
+                    name: "Discard 2, Draw 3",
+                    type: "powerup",
+                    icon: "♻️",
+                    description: "Discard two other cards from your hand. Then, draw and keep three cards from the hider deck.",
+                    count: 4
+                }
+            ],
+            "curse": [
+                {
+                    name: "Curse of Spotty Memory",
+                    type: "curse",
+                    icon: "🧠",
+                    description: "For the rest of your run, one random category of questions will be disabled at all times. After this curse is played, seekers must roll a die to determine the category of questions to be disabled. This category remains disabled until the next question is asked, at which point a die is rolled again to choose a new category. The same category can be disabled multiple times in a row.",
+                    cost: "Discard a time bonus.",
+                    count: 1
+                },
+                {
+                    name: "Curse of the Lemon Phylactery",
+                    type: "curse",
+                    icon: "🍋",
+                    description: "Before asking another question, the seekers must each find a lemon and affix it to the outermost layer of their clothes or skin. If, at any point, one of these lemons is no longer touching a seeker, you are awarded an extra S:30 M:45 L:60 minutes. This curse cannot be played during the endgame.",
+                    cost: "Discard a powerup.",
+                    count: 1
+                },
+                {
+                    name: "Curse of the Ransom Note",
+                    type: "curse",
+                    icon: "✂️",
+                    description: "The next question that the seekers ask must be composed of words and letters cut out of any printed material. The question must be coherent and include at least 5 words.",
+                    cost: "Spell out \"ransom note\" as a ransom note (without using this card).",
+                    count: 1
+                },
+                {
+                    name: "Curse of the Zoologist",
+                    type: "curse",
+                    icon: "🦎",
+                    description: "Take a photo of a wild fish, bird, mammal, reptile, amphibian, or bug. The seekers must take a picture of a wild animal in the same category before asking another question.",
+                    cost: "A photo of an animal.",
+                    count: 1
+                },
+                {
+                    name: "Curse of the Jammed Door",
+                    type: "curse",
+                    icon: "🚪",
+                    description: "For the next S:0.5 M:1 L:5 hours, whenever the seekers want to pass through a doorway into a building, business, train, or other vehicle, they must first roll 2 dice. If they do not roll a 7 or higher, they cannot enter that space (including through other doorways.) Any given doorway can be re-attempted after S:5 M:10 L:15 minutes.",
+                    cost: "Discard two cards.",
+                    count: 1
+                },
+                {
+                    name: "Curse of the Right Turn",
+                    type: "curse",
+                    icon: "➡️",
+                    description: "For the next S:20 M:40 L:60 minutes, the seekers can only turn right at any street intersection. If, at any point, they find themselves in a dead end where they cannot continue forward or turn right for another 1000 feet, they may do a full 180. A right turn is defined as a road at any angle that veers to the right of the seekers.",
+                    cost: "Discard a card.",
+                    count: 1
+                },
+                {
+                    name: "Curse of the Hidden Hangman",
+                    type: "curse",
+                    icon: "📝",
+                    description: "Before asking another question or boarding another form of transportation, seekers must beat the hider in a game of hangman. To play, the hider chooses a 5-letter word, and the game ends after either a correct word guess or 7 wrong letter guesses (head, body, two arms, two legs, and a hat). The hider must respond to all queries within 30 seconds. The seekers cannot challenge the hider for 10 minutes after a loss. After S:1 M:2 L:3 losses, the seekers must wait 10 more minutes and then the curse is cleared.",
+                    cost: "Discard 2 cards.",
+                    count: 1
+                },
+                {
+                    name: "Curse of the U-Turn",
+                    type: "curse",
+                    icon: "🔄",
+                    description: "The seekers must disembark their current mode of transportation at the next station (as long as that station is serviced by another form of transit in the next S:0.5 M:0.5 L:1 hours.)",
+                    cost: "Seekers must be heading the wrong way. (Their next station is further from you than they are.)",
+                    count: 1
+                },
+                {
+                    name: "Curse of the Impressionable Consumer",
+                    type: "curse",
+                    icon: "🛍️",
+                    description: "Seekers must enter and gain admission (if applicable) to a location or buy a product that they saw an advertisement for before asking another question. This advertisement must be found out in the world, not on a seeker's device, and must be at least 100 feet from the product or location itself.",
+                    cost: "The seekers' next question is free.",
+                    count: 1
+                },
+                {
+                    name: "Curse of the Labyrinth",
+                    type: "curse",
+                    icon: "🌀",
+                    description: "Spend up to S:5 M:20 L:30 minutes drawing a solvable maze and send a photo of it to the seekers. You cannot use the internet to research maze designs. The seekers must solve the maze before asking another question.",
+                    cost: "Draw a maze.",
+                    count: 1
+                },
+                {
+                    name: "Curse of the Bridge Troll",
+                    type: "curse",
+                    icon: "🌉",
+                    description: "The seekers must ask their next question from under a bridge.",
+                    cost: "Seekers must be at least S:1 M:1 L:0 miles from you.",
+                    count: 1
+                },
+                {
+                    name: "Curse of Water Weight",
+                    type: "curse",
+                    icon: "💧",
+                    description: "The seekers must acquire and carry at least 2 liters of liquid per seeker for the rest of your run. They cannot ask another question until they have acquired the liquid. The water may be distributed between seekers as they see fit. If the liquid is lost or abandoned at any point after acquisition, the hider is awarded a S:30 M:30 L:60 minute bonus.",
+                    cost: "Seekers must be within 1,000 feet (300 meters) of a body of water.",
+                    count: 1
+                },
+                {
+                    name: "Curse of the Distant Cuisine",
+                    type: "curse",
+                    icon: "🍜",
+                    description: "Find a restaurant within your zone that explicitly serves food from a specific foreign country. The seekers must visit a restaurant serving food from a country that is an equal or greater distance away before asking another question.",
+                    cost: "You must be at the restaurant.",
+                    count: 1
+                },
+                {
+                    name: "Curse of the Egg Partner",
+                    type: "curse",
+                    icon: "🥚",
+                    description: "The seekers must acquire an egg before asking another question. This egg is now treated as an official team member of the seekers. If any team members are abandoned or killed (defined as any crack, in the egg's case) before the end of your run, you are awarded an extra S:30 M:45 L:60 minutes. This curse cannot be played during the endgame.",
+                    cost: "Discard two cards.",
+                    count: 1
+                },
+                {
+                    name: "Curse of the Mediocre Travel Agent",
+                    type: "curse",
+                    icon: "✈️",
+                    description: "Choose any publicly-accessible place within S:0.25 M:0.25 L:0.5 miles of the seekers' current location. They cannot currently be on transit. They must go there, and spend at least S:5 M:5 L:10 minutes there, before asking another question. Then you must send you at least three photos of them enjoying their vacation, and procure an object to bring you as a souvenir. If this souvenir is lost before they can give it to you, you are awarded an extra S:30 M:45 L:60 minutes.",
+                    cost: "Their vacation destination must be further from you than their current location.",
+                    count: 1
+                },
+                {
+                    name: "Curse of the Urban Explorer",
+                    type: "curse",
+                    icon: "🚇",
+                    description: "For the rest of your run, seekers cannot ask questions when they are on transit or in a transit station.",
+                    cost: "Discard 2 cards.",
+                    count: 1
+                },
+                {
+                    name: "Curse of the Endless Tumble",
+                    type: "curse",
+                    icon: "🎲",
+                    description: "Seekers must roll a die at least 100 feet and have it land on a 5 or a 6 before they can ask another question. The die must roll the full distance, unaided, using only the momentum from the initial throw and gravity to travel the 100 feet. If the seekers accidentally hit someone with a die, you are awarded a S:10 M:20 L:30 minute bonus.",
+                    cost: "Roll a die. If it's a 5 or a 6, this card has no effect.",
+                    count: 1
+                },
+                {
+                    name: "Curse of the Drained Brain",
+                    type: "curse",
+                    icon: "🤯",
+                    description: "Choose three questions in different categories. The seekers cannot ask those questions for the rest of your run.",
+                    cost: "Discard your hand.",
+                    count: 1
+                },
+                {
+                    name: "Curse of the Luxury Car",
+                    type: "curse",
+                    icon: "🚗",
+                    description: "Take a photo of a car. The seekers must take a photo of a more expensive car before asking another question.",
+                    cost: "A photo of a car.",
+                    count: 1
+                },
+                {
+                    name: "Curse of the Gambler's Feet",
+                    type: "curse",
+                    icon: "🎰",
+                    description: "For the next S:20 M:40 L:60 minutes, seekers must roll a die before they take any steps in any direction. They may take that many steps before rolling again.",
+                    cost: "Roll a die. If it's an even number, this curse has no effect.",
+                    count: 1
+                },
+                {
+                    name: "Curse of the Unguided Tourist",
+                    type: "curse",
+                    icon: "🗺️",
+                    description: "Send the seekers an unzoomed Google Street View image from a street within 500 feet of where they are now. The shot has to be parallel to the horizon and include at least one human-built structure other than a road. Without using the internet for research, they must find what you sent them in real life before they can use transportation or ask another question. They must send a picture to the hider for verification.",
+                    cost: "Seekers must be outside.",
+                    count: 1
+                },
+                {
+                    name: "Curse of the Bird Guide",
+                    type: "curse",
+                    icon: "🦅",
+                    description: "You have one chance to film a bird for as long as possible, up to S:3 M:10 L:15 minutes straight. If, at any point, the bird leaves the frame, your timer is stopped. The seekers must then film a bird for the same amount of time or longer before asking another question.",
+                    cost: "Film a bird.",
+                    count: 1
+                },
+                {
+                    name: "Curse of the Cairn",
+                    type: "curse",
+                    icon: "🪨",
+                    description: "You have one attempt to stack as many rocks on top of each other as you can in a freestanding tower. Each rock may only touch one other rock. Once you have added a rock to the tower, it may not be removed. Before adding another rock, the tower must stand for at least five seconds. If at any point, any rock other than the base rock touches the ground, your tower has fallen. Once your tower falls, tell the seekers how many rocks high your tower was when it last stood for five seconds. The seekers must then construct a rock tower of the same number of rocks, under the same parameters, before asking another question. If their tower falls, they must restart. The rocks must be found in nature, and both teams must disperse the rocks after building.",
+                    cost: "Build a rock tower.",
+                    count: 1
+                },
+                {
+                    name: "Curse of the Overflowing Chalice",
+                    type: "curse",
+                    icon: "🏆",
+                    description: "For the next three questions, you may draw (not keep) an additional card when drawing from the hider deck.",
+                    cost: "Discard a card.",
+                    count: 1
+                }
+            ]
+        };
+
+        // Game state
+        let currentDeck = [];
+        let playerHand = [];
+        let originalDeckSize = 0;
+
+        // Initialize deck
+        function initializeDeck() {
+            currentDeck = [];
+            Object.values(cardDatabase).forEach(category => {
+                category.forEach(card => {
+                    for (let i = 0; i < card.count; i++) {
+                        currentDeck.push({...card, id: Math.random()});
+                    }
+                });
+            });
+            originalDeckSize = currentDeck.length;
+            updateDeckCounter();
+            updateHandBadge();
+        }
+
+        // Update deck counter
+        function updateDeckCounter() {
+            document.getElementById('deckCounter').textContent = `${currentDeck.length} cards remaining`;
+        }
+
+        // Update hand badge
+        function updateHandBadge() {
+            const badge = document.getElementById('handBadge');
+            const count = playerHand.length;
+            
+            if (count === 0) {
+                badge.style.display = 'none';
+            } else {
+                badge.style.display = 'flex';
+                badge.textContent = count;
+                badge.className = count > 6 ? 'hand-badge warning' : 'hand-badge';
+            }
+        }
+
+        // Get all unique cards
+        function getAllCards() {
+            const allCards = [];
+            Object.values(cardDatabase).forEach(category => {
+                allCards.push(...category);
+            });
+            return allCards;
+        }
+
+        // Display card
+        function displayCard(card, isDrawn = false) {
+            const cardStack = document.getElementById('cardStack');
+            const cardDisplay = document.getElementById('cardDisplay');
+            const cardElement = document.getElementById('card');
+            
+            cardStack.style.display = 'none';
+            cardDisplay.style.display = 'block';
+            
+            cardElement.className = `card ${card.type}`;
+            cardElement.querySelector('.card-icon').textContent = card.icon;
+            cardElement.querySelector('.card-title').textContent = card.name;
+            cardElement.querySelector('.card-description').textContent = card.description;
+            
+            const costElement = cardElement.querySelector('.card-cost');
+            if (card.cost) {
+                costElement.textContent = card.cost;
+                costElement.style.display = 'block';
+            } else {
+                costElement.style.display = 'none';
+            }
+            
+            const valuesElement = cardElement.querySelector('.card-values');
+            if (card.values) {
+                valuesElement.innerHTML = card.values.map(v => `<span class="card-value">${v}</span>`).join('');
+                valuesElement.style.display = 'flex';
+            } else {
+                valuesElement.style.display = 'none';
+            }
+
+            if (isDrawn) {
+                playerHand.push({...card, id: Math.random()});
+                updateHandBadge();
+                showNotification(`Drew: ${card.name}`);
+            }
+        }
+
+        // Show notification
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #27ae60;
+                color: white;
+                padding: 15px 20px;
+                border-radius: 8px;
+                z-index: 3000;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                animation: slideIn 0.3s ease;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Draw random card
+        function drawRandomCard() {
+            if (currentDeck.length === 0) {
+                showNotification('The deck is empty! Reset the deck to draw cards.');
+                return;
+            }
+            
+            const randomIndex = Math.floor(Math.random() * currentDeck.length);
+            const drawnCard = currentDeck.splice(randomIndex, 1)[0];
+            
+            displayCard(drawnCard, true);
+            updateDeckCounter();
+        }
+
+        // Reset deck
+        function resetDeck() {
+            initializeDeck();
+            playerHand = [];
+            updateHandBadge();
+            showNotification('Deck has been reset!');
+        }
+
+        // Close card view
+        function closeCardView() {
+            document.getElementById('cardStack').style.display = 'block';
+            document.getElementById('cardDisplay').style.display = 'none';
+        }
+
+        // Show hand
+        function showHand() {
+            const handOverlay = document.getElementById('handOverlay');
+            const handCards = document.getElementById('handCards');
+            const handContainer = document.querySelector('.hand-container');
+            
+            handOverlay.classList.add('show');
+            
+            if (playerHand.length === 0) {
+                handCards.innerHTML = '<div class="empty-hand">Your hand is empty. Draw some cards!</div>';
+                return;
+            }
+            
+            // Calculate container width based on number of cards (up to 3 columns)
+            const cardWidth = window.innerWidth <= 400 ? 85 : 110;
+            const gap = window.innerWidth <= 400 ? 10 : 15;
+            const padding = 60; // 30px on each side
+            const columns = Math.min(playerHand.length, 3);
+            const containerWidth = Math.min(95 * window.innerWidth / 100, (cardWidth * columns) + (gap * (columns - 1)) + padding);
+            
+            handContainer.style.width = containerWidth + 'px';
+            
+            handCards.innerHTML = playerHand.map(card => `
+                <div class="hand-card ${card.type}" data-card-id="${card.id}">
+                    <div class="hand-card-icon">${card.icon}</div>
+                    <div class="hand-card-title">${card.name}</div>
+                    <button class="hand-card-discard" onclick="event.stopPropagation(); discardFromHand('${card.id}')">Discard</button>
+                </div>
+            `).join('');
+            
+            // Add click listeners to hand cards for viewing details
+            document.querySelectorAll('.hand-card').forEach(handCard => {
+                handCard.addEventListener('click', function() {
+                    const cardId = parseFloat(this.dataset.cardId);
+                    const card = playerHand.find(c => c.id === cardId);
+                    if (card) {
+                        hideHand();
+                        displayCard(card);
+                    }
+                });
+            });
+        }
+
+        // Discard from hand - Fixed function
+        function discardFromHand(cardId) {
+            // Convert string ID back to number for comparison
+            const numericCardId = parseFloat(cardId);
+            const cardIndex = playerHand.findIndex(card => card.id === numericCardId);
+            if (cardIndex > -1) {
+                const discardedCard = playerHand.splice(cardIndex, 1)[0];
+                updateHandBadge();
+                showNotification(`Discarded: ${discardedCard.name}`);
+                showHand(); // Refresh hand display
+            }
+        }
+
+        // Hide hand
+        function hideHand() {
+            document.getElementById('handOverlay').classList.remove('show');
+        }
+
+        // Populate browse lists
+        function populateBrowseLists() {
+            Object.keys(cardDatabase).forEach(category => {
+                const listElement = document.querySelector(`[data-category="${category}"].category-cards`);
+                listElement.innerHTML = cardDatabase[category].map(card => 
+                    `<div class="card-list-item" data-category="${category}" data-card-name="${card.name}">${card.name}</div>`
+                ).join('');
+                
+                // Add event listeners
+                listElement.querySelectorAll('.card-list-item').forEach(item => {
+                    item.addEventListener('click', function() {
+                        selectCardFromBrowse(this.dataset.category, this.dataset.cardName);
+                    });
+                });
+            });
+        }
+
+        // Select card from browse
+        function selectCardFromBrowse(category, cardName) {
+            const card = cardDatabase[category].find(c => c.name === cardName);
+            if (card) {
+                displayCard(card);
+                document.getElementById('browseDropdown').classList.remove('show');
+                // Reset all category expansions
+                document.querySelectorAll('.category-cards').forEach(list => list.classList.remove('show'));
+                document.querySelectorAll('.category-triangle').forEach(triangle => triangle.classList.remove('expanded'));
+            }
+        }
+
+        // Search functionality
+        function performSearch(query) {
+            const allCards = getAllCards();
+            const results = allCards.filter(card => 
+                card.name.toLowerCase().includes(query.toLowerCase())
+            );
+            
+            const searchResults = document.getElementById('searchResults');
+            searchResults.innerHTML = results.map(card => 
+                `<div class="search-item" data-category="${card.type}" data-card-name="${card.name}">${card.name}</div>`
+            ).join('');
+            
+            if (results.length === 0) {
+                searchResults.innerHTML = '<div class="search-item">No cards found</div>';
+            }
+            
+            // Add event listeners
+            searchResults.querySelectorAll('.search-item').forEach(item => {
+                if (item.dataset.category && item.dataset.cardName) {
+                    item.addEventListener('click', function() {
+                        selectCardFromSearch(this.dataset.category, this.dataset.cardName);
+                    });
+                }
+            });
+        }
+
+        // Select card from search
+        function selectCardFromSearch(category, cardName) {
+            const card = cardDatabase[category].find(c => c.name === cardName);
+            if (card) {
+                displayCard(card);
+                document.getElementById('searchDropdown').classList.remove('show');
+                document.getElementById('searchInput').value = '';
+            }
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeDeck();
+            populateBrowseLists();
+            
+            // Card stack click
+            document.getElementById('cardStack').addEventListener('click', drawRandomCard);
+            
+            // Reset button
+            document.getElementById('resetBtn').addEventListener('click', function(e) {
+                e.stopPropagation();
+                resetDeck();
+            });
+            
+            // Close card
+            document.getElementById('cardClose').addEventListener('click', closeCardView);
+            
+            // Browse menu
+            document.getElementById('browseBtn').addEventListener('click', function() {
+                const dropdown = document.getElementById('browseDropdown');
+                dropdown.classList.toggle('show');
+                document.getElementById('searchDropdown').classList.remove('show');
+            });
+            
+            // Category header clicks
+            document.querySelectorAll('.category-header').forEach(header => {
+                header.addEventListener('click', function() {
+                    const category = this.dataset.category;
+                    const list = document.querySelector(`[data-category="${category}"].category-cards`);
+                    const triangle = this.querySelector('.category-triangle');
+                    
+                    list.classList.toggle('show');
+                    triangle.classList.toggle('expanded');
+                });
+            });
+            
+            // Search menu
+            document.getElementById('searchBtn').addEventListener('click', function() {
+                const dropdown = document.getElementById('searchDropdown');
+                dropdown.classList.toggle('show');
+                document.getElementById('browseDropdown').classList.remove('show');
+                if (dropdown.classList.contains('show')) {
+                    document.getElementById('searchInput').focus();
+                }
+            });
+            
+            // Search input
+            document.getElementById('searchInput').addEventListener('input', function() {
+                if (this.value.length > 0) {
+                    performSearch(this.value);
+                } else {
+                    document.getElementById('searchResults').innerHTML = '';
+                }
+            });
+            
+            // Hand button
+            document.getElementById('handBtn').addEventListener('click', showHand);
+            document.getElementById('handClose').addEventListener('click', hideHand);
+            
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.browse-container')) {
+                    document.getElementById('browseDropdown').classList.remove('show');
+                }
+                if (!e.target.closest('.search-container')) {
+                    document.getElementById('searchDropdown').classList.remove('show');
+                }
+            });
+        });
+
+        // Add styles for animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
