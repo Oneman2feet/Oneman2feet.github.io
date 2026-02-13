@@ -1,12 +1,12 @@
-const CACHE_NAME = "tags-v2";
+const CACHE_NAME = "tags-v3";
 const PRE_CACHE = [
-  "/",
-  "/styles.css",
-  "/app.js",
-  "/tags-bundle.json",
-  "/manifest.json",
-  "/icons/icon-192.png",
-  "/icons/icon-512.png",
+  "./",
+  "./styles.css",
+  "./app.js",
+  "./tags-bundle.json",
+  "./manifest.json",
+  "./icons/icon-192.png",
+  "./icons/icon-512.png",
 ];
 
 self.addEventListener("install", (e) => {
