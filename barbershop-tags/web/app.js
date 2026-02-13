@@ -236,7 +236,7 @@ document.addEventListener("keydown", (e) => {
 // ── Init ────────────────────────────────
 async function init() {
   if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/sw.js").catch(() => {});
+    navigator.serviceWorker.register("sw.js").catch(() => {});
   }
 
   await loadIndex();
