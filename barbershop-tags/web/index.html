@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0f0f13">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Tags">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <title>Barbershop Tags</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h1>🎶 Tags</h1>
+        <input type="text" id="search" placeholder="Search tags…" autocomplete="off">
+        <div class="filters">
+          <select id="key-filter">
+            <option value="">All Keys</option>
+          </select>
+        </div>
+      </div>
+      <ul id="tag-list" class="tag-list"></ul>
+      <div class="sidebar-footer">
+        <span id="tag-count"></span>
+      </div>
+    </aside>
+
+    <main class="content">
+      <div id="welcome" class="welcome">
+        <h2>Barbershop Tag Library</h2>
+        <p>Select a tag from the sidebar to view its notation.</p>
+        <p class="muted"><span id="total-count"></span> tags in the library</p>
+      </div>
+      <div id="tag-view" class="tag-view" hidden>
+        <header class="tag-header">
+          <button id="back-btn" class="back-btn" aria-label="Back to list">← Back</button>
+          <h2 id="tag-title"></h2>
+          <div class="tag-meta">
+            <span class="badge key-badge" id="tag-key"></span>
+            <span class="meta-text" id="tag-arranger"></span>
+            <span class="meta-text" id="tag-source"></span>
+          </div>
+        </header>
+        <div id="phrases" class="phrases"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

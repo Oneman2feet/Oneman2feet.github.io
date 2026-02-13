@@ -1,0 +1,24 @@
+{
+  "name": "Barbershop Tag Library",
+  "short_name": "Tags",
+  "description": "A curated library of barbershop tags with notation",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0f0f13",
+  "background_color": "#0f0f13",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
