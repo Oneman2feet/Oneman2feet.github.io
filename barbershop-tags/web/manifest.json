@@ -1,8 +1,9 @@
 {
-  "name": "Barbershop Tag Library",
-  "short_name": "Tags",
+  "name": "Great Tags",
+  "short_name": "Great Tags",
   "description": "A curated library of barbershop tags with notation",
-  "start_url": "/",
+  "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#0f0f13",

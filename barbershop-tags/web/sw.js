@@ -1,4 +1,4 @@
-const CACHE_NAME = "tags-v3";
+const CACHE_NAME = "tags-v4";
 const PRE_CACHE = [
   "./",
   "./styles.css",
